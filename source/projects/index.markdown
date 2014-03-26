@@ -1,7 +1,3 @@
-external-url: https://soundcloud.com/sycko-1
-
-This is my soundcloud page, it contains all my recent music posts, including original mixes, and mashups.
-
 ---
 layout: page
 title: "projects"
@@ -10,3 +6,4 @@ comments: true
 sharing: true
 footer: true
 ---
+As mentioned before, the vast majority of my projects are posted to soundcloud. I do have other projects that will be added to this site at a later time.
