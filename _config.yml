@@ -2,7 +2,7 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://liamsykes.co.uk
+url: http://sycko.github.io
 title: Liam Sykes
 subtitle: Student, Music Producer, DJ
 author: Liam Sykes
@@ -99,6 +99,8 @@ google_analytics_tracking_id:
 # Facebook Like
 facebook_like: false
 
+site.email: liam.sykes15@gmail.com
+
 social:
   title: # Defaults to "Follow me!" if not present
   adn: # App.net
@@ -107,6 +109,7 @@ social:
   github:
   googleplus: 100523730825796302451
   linkedin:
+  mixcloud: Sycko
   pinterest:
   soundcloud: sycko-1
   twitter: sYcko15
