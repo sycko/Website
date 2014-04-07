@@ -10,7 +10,7 @@ I am a student with a strong passion for music.
 
 Music and rhythm was an integral part of my life before I was born. My mother is the artistic director of a dance studio, so I like to think that I have had music around me since conception. 
 
-Although I succeeded academically, I was always drawn towards music. My first choral experience started in elemendary school, and I persisted with that through Middle and High School.
+Although I succeeded academically, I was always drawn towards music. My first choral experience started in elementary school, and I persisted with that through Middle and High School.
 
 About halfway through my sophomore year of high school, I discovered Electronic Dance Music (EDM). I was enthralled by the diversity of sound, as well as the complexity, depth, and beauty that each style had to offer.
 
