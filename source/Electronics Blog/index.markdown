@@ -15,4 +15,4 @@ footer: true
 
 <a http://www.instructables.com/id/Electronic-Music-Box-Powered-by-Arduino-sort-of/ >This</a> is the design for a music box powered by an Arduino microcontroller. The music is stored on a piece of paper and read through the device. As the paper passes through the device an infrared light reads the black and white marking on the paper and sends a signal to be played by the music box.
 
-<a http://www.instructables.com/id/This-Is-Your-Brain-On-Music/step3/Beat-detection-music-visualization-Arduino-and-Pro/ >This</a> is a design for a musical beat detector controlled by an Arduino microcontroller. 
+<a http://www.instructables.com/id/This-Is-Your-Brain-On-Music/step3/Beat-detection-music-visualization-Arduino-and-Pro/ >This</a> is a design for a musical beat detector controlled by an Arduino microcontroller. The designer uses processing to register the sound, which is then transmitted to the visualizer. By using processing, the designer doesn't have to worry about white noise. To get different colors, the designer assigned colors to different buckets. When a beat lands in a certain bucket, that color is displayed.
