@@ -8,11 +8,7 @@ footer: true
 ---
 
 ---
-layout: post
-title: "Week 1"
-date: 2014-09-08 11:19:01 -0400
-comments: true
-categories: 
+Week 1
 ---
 
 <a http://www.instructables.com/id/Arcade-Button-MIDI-Controller/?ALLSTEPS >These</a> are instructions for a MIDI controller built using an Arduino microcontroller.  This controller can send and receive MIDI messages to your PC, and allows you to control your software program such as Traktor. The white arcade buttons you see in the picture are the inputs and each button is mapped to a different sound/signal. When a button is pressed, it sends a signal to the software which is then sent to the listener.
