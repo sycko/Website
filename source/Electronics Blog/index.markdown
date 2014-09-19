@@ -10,7 +10,7 @@ footer: true
 Week 2
 ---
 
-``` [CPP][2b]
+```
 int led = 13; //create a variable called led with a value of 13
 int buttonPin = 12; //create a variable called buttonPin with a value of 12
 int potVal = 0; //create a variable called potVal with a value of 0
@@ -38,9 +38,9 @@ void loop() { //sends no information back to the loop
 //      Serial.println("off");
    }
 }
-'''
+```
 
-``` [CPP][2c]
+```
 int led = 13; //create a variable called led with a value of 13
 int buttonPin = 12; //create a variable called buttonPin with a value of 12
 int potVal = 0; //create a variable called potVal with a value of 0
@@ -72,7 +72,7 @@ void loop() { //sends no information back to the loop
 //      Serial.println("off");
    }
 }
-'''
+```
 
 Week 1
 ---

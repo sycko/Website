@@ -66,6 +66,130 @@
 <hr class="divider">
 
 
+<h2>Week 2</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>int led = 13; //create a variable called led with a value of 13
+</span><span class='line'>int buttonPin = 12; //create a variable called buttonPin with a value of 12
+</span><span class='line'>int potVal = 0; //create a variable called potVal with a value of 0
+</span><span class='line'> 
+</span><span class='line'>void setup() { //setup for the led and button
+</span><span class='line'>//   Serial.begin(9600);
+</span><span class='line'>   pinMode(led, OUTPUT); //sets the led to behave as an output
+</span><span class='line'>   pinMode(buttonPin, INPUT); //sets the button to behave as an input
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void loop() { //sends no information back to the loop
+</span><span class='line'>   if(digitalRead(buttonPin) == HIGH) { //if the buttonPin is read to be receiving voltage
+</span><span class='line'> 
+</span><span class='line'>      potVal = analogRead(1); //the potVal is set to change the signal
+</span><span class='line'>//      Serial.println(potVal);
+</span><span class='line'> 
+</span><span class='line'>      digitalWrite(led, HIGH); //turns led on
+</span><span class='line'>      delay(potVal); //the delay is set to the potVal
+</span><span class='line'>      digitalWrite(led, LOW); //turns led off
+</span><span class='line'>      delay(potVal); //the delay is set to the potVal
+</span><span class='line'> 
+</span><span class='line'>   } else if(digitalRead(buttonPin) == LOW) { //if the buttonPin is read to be receiving no voltage
+</span><span class='line'> 
+</span><span class='line'>      digitalWrite(led, LOW); //the led is off
+</span><span class='line'>//      Serial.println("off");
+</span><span class='line'>   }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>int led = 13; //create a variable called led with a value of 13
+</span><span class='line'>int buttonPin = 12; //create a variable called buttonPin with a value of 12
+</span><span class='line'>int potVal = 0; //create a variable called potVal with a value of 0
+</span><span class='line'>int led2 = 11; //create a variable called led2 with a value of 11
+</span><span class='line'> 
+</span><span class='line'>void setup() { //setup for the led and button
+</span><span class='line'>//   Serial.begin(9600);
+</span><span class='line'>   pinMode(led, OUTPUT); //sets the led to behave as an output
+</span><span class='line'>   pinMode(led2, OUTPUT); //sets the led2 to behave as an output
+</span><span class='line'>   pinMode(buttonPin, INPUT); //sets the button to behave as an input
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void loop() { //sends no information back to the loop
+</span><span class='line'>   if(digitalRead(buttonPin) == HIGH) { //if the buttonPin is read to be receiving voltage
+</span><span class='line'> 
+</span><span class='line'>      potVal = analogRead(1); //the potVal is set to change the signal
+</span><span class='line'>//      Serial.println(potVal);
+</span><span class='line'> 
+</span><span class='line'>      digitalWrite(led, HIGH); //turns led on
+</span><span class='line'>      digitalWrite(led2, LOW); //turns led2 off
+</span><span class='line'>      delay(potVal); //the delay is set to the potVal
+</span><span class='line'>      digitalWrite(led, LOW); //turns led off
+</span><span class='line'>      digitalWrite(led2, HIGH); // turns led2 on
+</span><span class='line'>      delay(potVal); //the delay is set to the potVal
+</span><span class='line'> 
+</span><span class='line'>   } else if(digitalRead(buttonPin) == LOW) { //if the buttonPin is read to be receiving no voltage
+</span><span class='line'> 
+</span><span class='line'>      digitalWrite(led, LOW); //the led is off
+</span><span class='line'>//      Serial.println("off");
+</span><span class='line'>   }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
 <h2>Week 1</h2>
 
 <p><a href=http://www.instructables.com/id/Arcade-Button-MIDI-Controller/?ALLSTEPS >These</a> are instructions for a MIDI controller built using an Arduino microcontroller.  This controller can send and receive MIDI messages to your PC, and allows you to control your software program such as Traktor. The white arcade buttons you see in the picture are the inputs and each button is mapped to a different sound/signal. When a button is pressed, it sends a signal to the software which is then sent to the listener.</p>
