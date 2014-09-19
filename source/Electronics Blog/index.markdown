@@ -9,6 +9,7 @@ footer: true
 
 Week 2
 ---
+Question 2b
 
 ``` [CPP] [2b]
 int led = 13; //create a variable called led with a value of 13
@@ -39,6 +40,7 @@ void loop() { //sends no information back to the loop
    }
 }
 ```
+Question 2c
 
 ``` [CPP] [2c]
 int led = 13; //create a variable called led with a value of 13
