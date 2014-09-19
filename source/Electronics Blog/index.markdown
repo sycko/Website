@@ -7,6 +7,72 @@ sharing: true
 footer: true
 ---
 
+Week 2
+---
+
+``` [CPP][2b]
+int led = 13; //create a variable called led with a value of 13
+int buttonPin = 12; //create a variable called buttonPin with a value of 12
+int potVal = 0; //create a variable called potVal with a value of 0
+ 
+void setup() { //setup for the led and button
+//   Serial.begin(9600);
+   pinMode(led, OUTPUT); //sets the led to behave as an output
+   pinMode(buttonPin, INPUT); //sets the button to behave as an input
+}
+ 
+void loop() { //sends no information back to the loop
+   if(digitalRead(buttonPin) == HIGH) { //if the buttonPin is read to be receiving voltage
+ 
+      potVal = analogRead(1); //the potVal is set to change the signal
+//      Serial.println(potVal);
+ 
+      digitalWrite(led, HIGH); //turns led on
+      delay(potVal); //the delay is set to the potVal
+      digitalWrite(led, LOW); //turns led off
+      delay(potVal); //the delay is set to the potVal
+ 
+   } else if(digitalRead(buttonPin) == LOW) { //if the buttonPin is read to be receiving no voltage
+ 
+      digitalWrite(led, LOW); //the led is off
+//      Serial.println("off");
+   }
+}
+'''
+
+``` [CPP][2c]
+int led = 13; //create a variable called led with a value of 13
+int buttonPin = 12; //create a variable called buttonPin with a value of 12
+int potVal = 0; //create a variable called potVal with a value of 0
+int led2 = 11; //create a variable called led2 with a value of 11
+ 
+void setup() { //setup for the led and button
+//   Serial.begin(9600);
+   pinMode(led, OUTPUT); //sets the led to behave as an output
+   pinMode(led2, OUTPUT); //sets the led2 to behave as an output
+   pinMode(buttonPin, INPUT); //sets the button to behave as an input
+}
+ 
+void loop() { //sends no information back to the loop
+   if(digitalRead(buttonPin) == HIGH) { //if the buttonPin is read to be receiving voltage
+ 
+      potVal = analogRead(1); //the potVal is set to change the signal
+//      Serial.println(potVal);
+ 
+      digitalWrite(led, HIGH); //turns led on
+      digitalWrite(led2, LOW); //turns led2 off
+      delay(potVal); //the delay is set to the potVal
+      digitalWrite(led, LOW); //turns led off
+      digitalWrite(led2, HIGH); // turns led2 on
+      delay(potVal); //the delay is set to the potVal
+ 
+   } else if(digitalRead(buttonPin) == LOW) { //if the buttonPin is read to be receiving no voltage
+ 
+      digitalWrite(led, LOW); //the led is off
+//      Serial.println("off");
+   }
+}
+'''
 
 Week 1
 ---
