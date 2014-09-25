@@ -66,7 +66,167 @@
 <hr class="divider">
 
 
+<h2>Week 3</h2>
+
+<p>Part 1</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>int ledPin = 13;
+</span><span class='line'>int potVal = 0;
+</span><span class='line'> 
+</span><span class='line'>int currentMidiChannel = 3;
+</span><span class='line'>int currentMidiNote = 0;
+</span><span class='line'>int currentMidiVelocity = 127;
+</span><span class='line'> 
+</span><span class='line'>void setup() {
+</span><span class='line'>  pinMode(ledPin, OUTPUT);
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void loop() {
+</span><span class='line'>   
+</span><span class='line'>  digitalWrite(ledPin, HIGH);
+</span><span class='line'>  delay(100);
+</span><span class='line'>  digitalWrite(ledPin, LOW);
+</span><span class='line'>   
+</span><span class='line'>  //analogRead() returns a number between 0 and 1023
+</span><span class='line'>  potVal = analogRead(1);
+</span><span class='line'>  //a midi note can only be between 0 and 127, same with a midi velocity
+</span><span class='line'>  currentMidiNote = potVal/8;
+</span><span class='line'>   
+</span><span class='line'>  usbMIDI.sendNoteOn(currentMidiNote, currentMidiVelocity, currentMidiChannel);
+</span><span class='line'>  delay(1000);
+</span><span class='line'>  usbMIDI.sendNoteOff(currentMidiNote, 0, currentMidiChannel);
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Part 4</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>int led = 13;
+</span><span class='line'>int buttonPin = 12;
+</span><span class='line'>int potVal = 0;
+</span><span class='line'>int currentMidiChannel = 3;
+</span><span class='line'>int currentMidiNote = 0;
+</span><span class='line'>int currentMidiVelocity = 127;
+</span><span class='line'>int buttonPin2 = 11;
+</span><span class='line'>
+</span><span class='line'>void setup() {
+</span><span class='line'>   Serial.begin(9600);
+</span><span class='line'>   pinMode(led, OUTPUT);
+</span><span class='line'>   pinMode(buttonPin, INPUT);
+</span><span class='line'>   pinMode(buttonPin2, INPUT);
+</span><span class='line'> }
+</span><span class='line'> 
+</span><span class='line'>void loop() {
+</span><span class='line'>   if(digitalRead(buttonPin) == HIGH) {
+</span><span class='line'> 
+</span><span class='line'>      potVal = analogRead(1); //read the analog values from the potometer
+</span><span class='line'>      currentMidiNote = 60;
+</span><span class='line'>      Serial.println(potVal);
+</span><span class='line'>      currentMidiVelocity = potVal/8;
+</span><span class='line'> 
+</span><span class='line'>      digitalWrite(led, HIGH);
+</span><span class='line'>      delay(1000);
+</span><span class='line'>      digitalWrite(led, LOW);
+</span><span class='line'>      
+</span><span class='line'>   if(digitalRead(buttonPin2) == HIGH)
+</span><span class='line'> 
+</span><span class='line'>      potVal = analogRead(1); //read the analog values from the potometer
+</span><span class='line'>      currentMidiNote = 67;
+</span><span class='line'>      Serial.println(potVal);
+</span><span class='line'>      currentMidiVelocity = potVal/8;
+</span><span class='line'> 
+</span><span class='line'>      digitalWrite(led, HIGH);
+</span><span class='line'>      delay(1000);
+</span><span class='line'>      digitalWrite(led, LOW);
+</span><span class='line'> 
+</span><span class='line'>  usbMIDI.sendNoteOn(currentMidiNote, currentMidiVelocity, currentMidiChannel);
+</span><span class='line'>  delay(1000);
+</span><span class='line'>  usbMIDI.sendNoteOff(currentMidiNote, 48, currentMidiChannel);
+</span><span class='line'> 
+</span><span class='line'>   } else if(digitalRead(buttonPin) == LOW) {
+</span><span class='line'> 
+</span><span class='line'>      digitalWrite(led, LOW);
+</span><span class='line'>      Serial.println("off");
+</span><span class='line'>   }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
 <h2>Week 2</h2>
+
+<p>Question 2b</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -124,7 +284,7 @@
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
 
-
+<p>Question 2c</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
