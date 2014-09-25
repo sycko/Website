@@ -7,6 +7,92 @@ sharing: true
 footer: true
 ---
 
+Week 3
+---
+Part 1
+
+``` [CPP] [2b]
+int ledPin = 13;
+int potVal = 0;
+ 
+int currentMidiChannel = 3;
+int currentMidiNote = 0;
+int currentMidiVelocity = 127;
+ 
+void setup() {
+  pinMode(ledPin, OUTPUT);
+}
+ 
+void loop() {
+   
+  digitalWrite(ledPin, HIGH);
+  delay(100);
+  digitalWrite(ledPin, LOW);
+   
+  //analogRead() returns a number between 0 and 1023
+  potVal = analogRead(1);
+  //a midi note can only be between 0 and 127, same with a midi velocity
+  currentMidiNote = potVal/8;
+   
+  usbMIDI.sendNoteOn(currentMidiNote, currentMidiVelocity, currentMidiChannel);
+  delay(1000);
+  usbMIDI.sendNoteOff(currentMidiNote, 0, currentMidiChannel);
+}
+```
+
+Part 4
+
+``` [CPP] [2b]
+int led = 13;
+int buttonPin = 12;
+int potVal = 0;
+int currentMidiChannel = 3;
+int currentMidiNote = 0;
+int currentMidiVelocity = 127;
+int buttonPin2 = 11;
+
+void setup() {
+   Serial.begin(9600);
+   pinMode(led, OUTPUT);
+   pinMode(buttonPin, INPUT);
+   pinMode(buttonPin2, INPUT);
+ }
+ 
+void loop() {
+   if(digitalRead(buttonPin) == HIGH) {
+ 
+      potVal = analogRead(1); //read the analog values from the potometer
+      currentMidiNote = 60;
+      Serial.println(potVal);
+      currentMidiVelocity = potVal/8;
+ 
+      digitalWrite(led, HIGH);
+      delay(1000);
+      digitalWrite(led, LOW);
+      
+   if(digitalRead(buttonPin2) == HIGH)
+ 
+      potVal = analogRead(1); //read the analog values from the potometer
+      currentMidiNote = 67;
+      Serial.println(potVal);
+      currentMidiVelocity = potVal/8;
+ 
+      digitalWrite(led, HIGH);
+      delay(1000);
+      digitalWrite(led, LOW);
+ 
+  usbMIDI.sendNoteOn(currentMidiNote, currentMidiVelocity, currentMidiChannel);
+  delay(1000);
+  usbMIDI.sendNoteOff(currentMidiNote, 48, currentMidiChannel);
+ 
+   } else if(digitalRead(buttonPin) == LOW) {
+ 
+      digitalWrite(led, LOW);
+      Serial.println("off");
+   }
+}
+```
+
 Week 2
 ---
 Question 2b

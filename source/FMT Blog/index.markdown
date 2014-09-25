@@ -7,6 +7,22 @@ sharing: true
 footer: true
 ---
 
+Distance vs. Intensity
+---
+
+In this experiment we were measuring the Sound Pressure Level (SPL) at different frequencies. As the SPL meter got farther from the speaker, the readings decreased, which was expected. In the studio there were a few different sounds that could have affected the readings, there was the hum of the air conditioner, as well as the sirens from an emergency response vehicle.
+
+Our speaker was placed near the front left corner of Studio D. It was five feet from front wall, four feet from left wall, twelve feet from back wall, eighteen feet from entrance wall, resting on the floor, and five feet below the ceiling. It was also at a 180 degree angle with closest wall, facing the entrance to the studio.
+
+We placed the SPL Meter at the same level as the speaker hoping to get the best reading possible.
+
+My partners were Ally and Emma, Ally rand the Max patch while Emma positioned the SPL Meter and I recorded the distance and dB reading.
+
+We started at one and a half feet and recorded all of the frequencies, including our chosen frequency of 250 Hz, then progressed to three feet, six feet, and then twelve feet. Making sure to get an equal reading for all frequencies at the specified distance.
+
+I had expected the dB readings to decrease as the SPL Meter got farther from the speaker and that is exactly what happened. The only frequency where there was little to no change was at 100 Hz, and I am not sure as to why that is the case. I would like to know why the 100hz frequency had little to no change, I know that sub bass isn't directional, but the dB readings should still diminish over distance.
+
+
 Listen Record Listen
 ---
 
