@@ -7,11 +7,81 @@ sharing: true
 footer: true
 ---
 
+Week 4
+---
+
+In this lab we used our first Lab's code as an oscillator. This made a very basic monophonic squarewave synth that can hit different notes. My breadboard could only fit five buttons and therefore could only play 5 programmable notes. 
+
+In addition to programming different notes, we also used the "void playFrequency(int freq)" function in order to tidy up our code. This function allowed us to use one line of code in stead of four when programming the frequency of each note being played.
+
+My final code is below:
+
+```
+int oscillatorPin = 13;
+
+int gNoteButtonPin = 8;
+int aNoteButtonPin = 9;
+int bNoteButtonPin = 10;
+int cNoteButtonPin = 11;
+int dNoteButtonPin = 12;
+
+//you can find the frequency of different notes here:
+//http://www.phy.mtu.edu/~suits/notefreqs.html
+int middleGFrequency = 196;
+int middleAFrequency = 220;
+int middleBFrequency = 246;
+int middleCFrequency = 261;
+int middleDFrequency = 294;
+
+void setup() {
+   pinMode(oscillatorPin, OUTPUT);
+   pinMode(gNoteButtonPin, INPUT);
+   pinMode(aNoteButtonPin, INPUT);
+   pinMode(bNoteButtonPin, INPUT);
+   pinMode(cNoteButtonPin, INPUT);
+   pinMode(dNoteButtonPin, INPUT);
+}
+
+void loop() {
+
+   if(digitalRead(cNoteButtonPin) == HIGH) {
+
+      playFrequency(middleCFrequency);
+
+   } else if(digitalRead(dNoteButtonPin) == HIGH) {
+
+      playFrequency(middleDFrequency);
+     
+   } else if(digitalRead(bNoteButtonPin) == HIGH) {
+
+      playFrequency(middleBFrequency);
+     
+   } else if(digitalRead(aNoteButtonPin) == HIGH) {
+
+      playFrequency(middleAFrequency);
+      
+   } else if(digitalRead(gNoteButtonPin) == HIGH) {
+
+      playFrequency(middleGFrequency);
+
+   } else {
+      //do some other stuff if you want anything to happen
+ }
+}
+
+void playFrequency(int freq) {
+   digitalWrite(oscillatorPin, HIGH);
+   delayMicroseconds(1000000 / freq / 2);
+   digitalWrite(oscillatorPin, LOW);
+   delayMicroseconds(1000000 / freq / 2);
+}
+```
+
 Week 3
 ---
 Part 1
 
-``` [CPP] [2b]
+``` 
 int ledPin = 13;
 int potVal = 0;
  
@@ -42,7 +112,7 @@ void loop() {
 
 Part 4
 
-``` [CPP] [2b]
+``` 
 int led = 13;
 int buttonPin = 12;
 int potVal = 0;
@@ -97,7 +167,7 @@ Week 2
 ---
 Question 2b
 
-``` [CPP] [2b]
+``` 
 int led = 13; //create a variable called led with a value of 13
 int buttonPin = 12; //create a variable called buttonPin with a value of 12
 int potVal = 0; //create a variable called potVal with a value of 0
@@ -128,7 +198,7 @@ void loop() { //sends no information back to the loop
 ```
 Question 2c
 
-``` [CPP] [2c]
+``` 
 int led = 13; //create a variable called led with a value of 13
 int buttonPin = 12; //create a variable called buttonPin with a value of 12
 int potVal = 0; //create a variable called potVal with a value of 0

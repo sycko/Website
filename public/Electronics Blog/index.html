@@ -66,6 +66,132 @@
 <hr class="divider">
 
 
+<h2>Week 4</h2>
+
+<p>In this lab we used our first Lab&rsquo;s code as an oscillator. This made a very basic monophonic squarewave synth that can hit different notes. My breadboard could only fit five buttons and therefore could only play 5 programmable notes.</p>
+
+<p>In addition to programming different notes, we also used the &ldquo;void playFrequency(int freq)&rdquo; function in order to tidy up our code. This function allowed us to use one line of code in stead of four when programming the frequency of each note being played.</p>
+
+<p>My final code is below:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>int oscillatorPin = 13;
+</span><span class='line'>
+</span><span class='line'>int gNoteButtonPin = 8;
+</span><span class='line'>int aNoteButtonPin = 9;
+</span><span class='line'>int bNoteButtonPin = 10;
+</span><span class='line'>int cNoteButtonPin = 11;
+</span><span class='line'>int dNoteButtonPin = 12;
+</span><span class='line'>
+</span><span class='line'>//you can find the frequency of different notes here:
+</span><span class='line'>//http://www.phy.mtu.edu/~suits/notefreqs.html
+</span><span class='line'>int middleGFrequency = 196;
+</span><span class='line'>int middleAFrequency = 220;
+</span><span class='line'>int middleBFrequency = 246;
+</span><span class='line'>int middleCFrequency = 261;
+</span><span class='line'>int middleDFrequency = 294;
+</span><span class='line'>
+</span><span class='line'>void setup() {
+</span><span class='line'>   pinMode(oscillatorPin, OUTPUT);
+</span><span class='line'>   pinMode(gNoteButtonPin, INPUT);
+</span><span class='line'>   pinMode(aNoteButtonPin, INPUT);
+</span><span class='line'>   pinMode(bNoteButtonPin, INPUT);
+</span><span class='line'>   pinMode(cNoteButtonPin, INPUT);
+</span><span class='line'>   pinMode(dNoteButtonPin, INPUT);
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>void loop() {
+</span><span class='line'>
+</span><span class='line'>   if(digitalRead(cNoteButtonPin) == HIGH) {
+</span><span class='line'>
+</span><span class='line'>      playFrequency(middleCFrequency);
+</span><span class='line'>
+</span><span class='line'>   } else if(digitalRead(dNoteButtonPin) == HIGH) {
+</span><span class='line'>
+</span><span class='line'>      playFrequency(middleDFrequency);
+</span><span class='line'>     
+</span><span class='line'>   } else if(digitalRead(bNoteButtonPin) == HIGH) {
+</span><span class='line'>
+</span><span class='line'>      playFrequency(middleBFrequency);
+</span><span class='line'>     
+</span><span class='line'>   } else if(digitalRead(aNoteButtonPin) == HIGH) {
+</span><span class='line'>
+</span><span class='line'>      playFrequency(middleAFrequency);
+</span><span class='line'>      
+</span><span class='line'>   } else if(digitalRead(gNoteButtonPin) == HIGH) {
+</span><span class='line'>
+</span><span class='line'>      playFrequency(middleGFrequency);
+</span><span class='line'>
+</span><span class='line'>   } else {
+</span><span class='line'>      //do some other stuff if you want anything to happen
+</span><span class='line'> }
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>void playFrequency(int freq) {
+</span><span class='line'>   digitalWrite(oscillatorPin, HIGH);
+</span><span class='line'>   delayMicroseconds(1000000 / freq / 2);
+</span><span class='line'>   digitalWrite(oscillatorPin, LOW);
+</span><span class='line'>   delayMicroseconds(1000000 / freq / 2);
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
 <h2>Week 3</h2>
 
 <p>Part 1</p>
