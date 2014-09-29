@@ -24,7 +24,7 @@ I had expected the dB readings to decrease as the SPL Meter got farther from the
 
 In conclusion, for the vast majority of the readings, the dBs dropped as the SPL Meter was moved farther away, much like I expected.
 
-{% img https://drive.google.com/file/d/0B9QjEv0QrVUkVDhmSzlLbXF4Y2c/edit?usp=sharing %}
+{% img http://imgur.com/zjk1qOx %}
 
 
 Listen Record Listen

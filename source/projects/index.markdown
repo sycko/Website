@@ -6,6 +6,6 @@ comments: true
 sharing: true
 footer: true
 ---
-As mentioned before, the vast majority of my projects are posted to <a href=https://soundcloud.com/iamsycko >Soundcloud.</a> There I produce under the alias sYcko, producing various mashups, single tracks, and remixes.
+As mentioned before, the vast majority of my projects are posted to <a href=https://soundcloud.com/sycko-1 >Soundcloud.</a> There I produce under the alias sYcko, producing various mashups, single tracks, and remixes.
 
 In addition to my soundcloud projects, with the help of some friends, I also built the subwoofer I use to mix and master my music. Over the duration of a week, we constructed an 18" x 18" MDF board box for an Eminence Lab 12 Subwoofer. Following the construction of the box for the subwoofer, we built the desk I currently use. It is a 5' wide wooden desk with aluminium accents and selving on the legs. Pictures are soon to follow.
