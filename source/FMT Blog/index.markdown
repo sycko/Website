@@ -20,7 +20,11 @@ My partners were Ally and Emma, Ally rand the Max patch while Emma positioned th
 
 We started at one and a half feet and recorded all of the frequencies, including our chosen frequency of 250 Hz, then progressed to three feet, six feet, and then twelve feet. Making sure to get an equal reading for all frequencies at the specified distance.
 
-I had expected the dB readings to decrease as the SPL Meter got farther from the speaker and that is exactly what happened. The only frequency where there was little to no change was at 100 Hz, and I am not sure as to why that is the case. I would like to know why the 100hz frequency had little to no change, I know that sub bass isn't directional, but the dB readings should still diminish over distance.
+I had expected the dB readings to decrease as the SPL Meter got farther from the speaker and that is exactly what happened. The only frequency where there was little to no change was at 100 Hz, and I am not sure as to why that is the case. I would like to know why the 100hz frequency had little to no change, I know that sub bass is omnidirectional, but the dB readings should still diminish over distance.
+
+In conclusion, for the vast majority of the readings, the dBs dropped as the SPL Meter was moved farther away, much like I expected.
+
+{% img https://drive.google.com/file/d/0B9QjEv0QrVUkVDhmSzlLbXF4Y2c/edit?usp=sharing %}
 
 
 Listen Record Listen
