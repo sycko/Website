@@ -20,9 +20,9 @@ My partners were Ally and Emma, Ally ran the Max patch while Emma positioned the
 
 We started at one and a half feet and recorded all of the frequencies, including our chosen frequency of 250 Hz, then progressed to three feet, six feet, and then twelve feet. Making sure to get an equal reading for all frequencies at the specified distance.
 
-I had expected the dB readings to decrease as the SPL Meter got farther from the speaker and that is exactly what happened. The only frequency where there was little to no change was at 100 Hz, and I am not sure as to why that is the case. I would like to know why the 100hz frequency had little to no change, I know that sub bass is omnidirectional, but the dB readings should still diminish over distance.
+I had expected the dB readings to decrease as the SPL Meter got farther from the speaker due to the Inverse Square Law of Sound, and for the most part, that is what happened. The only frequency where there was little to no change was at 100 Hz, I can only assume that the reason for this was due to the room we were using. Sound will follow the Inverse Square Law perfectly if there are no reflections or reverberations. The reason the 100hz frequency went up at the end was due to the reflections and reverberations. Lower frequencies cause the air particles to slowly move and adjust whereas the higherfrequencies just push the airwaves quickly and abruptly causing them to be shot out in a more direct beam, as opposed to the omnidirectional 100hz frequency.
 
-In conclusion, for the vast majority of the readings, the dBs dropped as the SPL Meter was moved farther away, much like I expected.
+In conclusion, for the vast majority of the readings, the dBs dropped as the SPL Meter was moved farther away.
 
 {% img http://i.imgur.com/zjk1qOx.png %}
 
