@@ -16,7 +16,7 @@ Our speaker was placed near the front left corner of Studio D. It was five feet 
 
 We placed the SPL Meter at the same level as the speaker hoping to get the best reading possible.
 
-My partners were Ally and Emma, Ally rand the Max patch while Emma positioned the SPL Meter and I recorded the distance and dB reading.
+My partners were Ally and Emma, Ally ran the Max patch while Emma positioned the SPL Meter, and I recorded the distance and dB reading.
 
 We started at one and a half feet and recorded all of the frequencies, including our chosen frequency of 250 Hz, then progressed to three feet, six feet, and then twelve feet. Making sure to get an equal reading for all frequencies at the specified distance.
 
