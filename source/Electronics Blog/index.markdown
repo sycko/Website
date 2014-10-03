@@ -12,7 +12,7 @@ Week 4
 
 In this lab we used our first Lab's code as an oscillator. This made a very basic monophonic squarewave synth that can hit different notes. My breadboard could only fit five buttons and therefore could only play 5 programmable notes. 
 
-In addition to programming different notes, we also used the "void playFrequency(int freq)" function in order to tidy up our code. This function allowed us to use one line of code instead of four when programming the frequency of each note being played. the "int freq" function tells the program to read the integer value of the frequency specified in order to create the sound we want.
+In addition to programming different notes, we also used the "void playFrequency(int freq)" function in order to tidy up our code. This function allowed us to use one line of code instead of four when programming the frequency of each note being played. The "void playFrequency" function tells us that it is creating a fucntion called "playFrequency". The "int freq" argument says that this function will accept an outside value in the form of integer, called frequency.
 
 My final code is below:
 
