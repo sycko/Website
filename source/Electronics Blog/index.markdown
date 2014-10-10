@@ -7,6 +7,290 @@ sharing: true
 footer: true
 ---
 
+Week 5
+---
+
+Part 1a
+
+```
+int ledPin = 13;
+ 
+void setup() {
+  Serial.begin(9600);
+  pinMode(ledPin, OUTPUT);
+}
+ 
+void loop() {
+  for(int i = 0; i < 10; i++) {
+    Serial.println(i);
+    digitalWrite(ledPin, HIGH);
+    delay(250);
+    digitalWrite(ledPin, LOW);
+    delay(250);
+  }
+ 
+  delay(5000);
+}
+
+//The function "for(int i = 0; i < 10; i++)" is telling us how many times the LED blinks in a loop. The smaller number is subtracted from the bigger number to get the specified amount of blinks per loop. There is also a five second delay between loops.
+```
+
+Part 1b
+
+```
+int ledPin = 13; //creates an integer value called ledPin at a value of 13
+int led2Pin = 14; //creates an integer value called led2Pin at a value of 14
+ 
+void setup() {
+  Serial.begin(9600);
+  pinMode(ledPin, OUTPUT); //sets ledPin to OUTPUT
+  pinMode(led2Pin, OUTPUT); //sets led2Pin to OUTPUT
+}
+ 
+void loop() {
+  for(int i = 0; i < 10; i++) { //says the light will blink 10 times before the loop resets
+    Serial.println(i);
+    blinkLED(ledPin, 500); //ledpin will blink for .5 seconds
+    blinkLED(led2Pin, i * 100); //led2Pin will blink for whatever i is set to multiplied by 100 milliseconds
+  }
+ 
+  delay(5000); //delays for 5 seconds before looping again
+}
+ 
+void blinkLED(int blinkPin, int blinkLength) { //Creates a function that is called blinkLED. It will accept integer values called blinkPin and blinkLength
+  digitalWrite(blinkPin, HIGH); //turns blinkPin on
+  delay(blinkLength); //sets the time that the blinkPin will be on
+  digitalWrite(blinkPin, LOW); //turns blinkPin off
+  delay(blinkLength); //sets the time that the blinkPin will be off
+}
+```
+
+Part 2
+
+```
+int ledPin = 13;
+int led2Pin = 14;
+int led3Pin = 15;
+int buttonPin = 12;
+ 
+//an unsigned long is type of variable just like int,
+//but it can hold much bigger numbers, which can
+//be useful sometimes
+unsigned long millisecondsSinceReset = 0;
+ 
+void setup() {
+  Serial.begin(9600);
+  pinMode(ledPin, OUTPUT);
+  pinMode(led2Pin, OUTPUT);
+  pinMode(led3Pin, OUTPUT);
+  pinMode(buttonPin, INPUT);
+}
+ 
+void loop() { //creates a loop
+ 
+  millisecondsSinceReset = millis(); //millisecondsSinceReset is set to equal millis which is equal to the number of milliseconds since you last reset your teensy
+ 
+  if(millisecondsSinceReset < 3000) { //if it has been less than 3 seconds since the last reset
+    digitalWrite(ledPin, HIGH); //ledPin will be HIGH
+    digitalWrite(led2Pin, LOW); //led2Pin will be LOW
+    digitalWrite(led3Pin, LOW); //led3Pin will be LOW
+  } else if (millisecondsSinceReset < 5000) { //if it has been less that 5 seconds since the last reset but more than 3 seconds
+    blinkLED(led2Pin, 150); //led2Pin will blink every .15 seconds
+  } else if (millisecondsSinceReset < 10000) { //if it has been less that 10 seconds since the last reset but more than 5 seconds
+    blinkLED(led3Pin, 100); //led3Pin will blink every .1 seconds
+  } else { //anything after 10 seconds
+    digitalWrite(ledPin, LOW); //ledPin will be LOW
+    digitalWrite(led2Pin, LOW); //led2Pin will be LOW
+    digitalWrite(led3Pin, HIGH); //led3Pin will be HIGH
+  }
+}
+ 
+void blinkLED(int blinkPin, int blinkLength) {
+  digitalWrite(blinkPin, HIGH);
+  delay(blinkLength);
+  digitalWrite(blinkPin, LOW);
+  delay(blinkLength);
+}
+```
+
+Part 3
+
+```
+int oscillatorPin = 14;
+int ledPin = 13;
+int buttonPin = 12;
+ 
+unsigned long triggerTime = 0;
+ 
+int middleCFrequency = 261;
+int middleDFrequency = 294;
+ 
+void setup() {
+pinMode(oscillatorPin, OUTPUT);
+pinMode(ledPin, OUTPUT);
+pinMode(buttonPin, INPUT);
+}
+ 
+void loop() {
+ 
+  if(digitalRead(buttonPin) == HIGH) {
+ 
+    digitalWrite(ledPin, HIGH);
+ 
+    triggerTime = millis();
+    while(millis() < triggerTime + 1000) {
+      playFrequency(middleCFrequency);
+    }
+ 
+    triggerTime = millis();
+    while(millis() < triggerTime + 500) {
+      playFrequency(middleDFrequency);
+    }
+ 
+    delay(200);
+ 
+  } else {
+    digitalWrite(ledPin, LOW);
+  }
+}
+ 
+void playFrequency(int freq) {
+  digitalWrite(oscillatorPin, HIGH);
+  delayMicroseconds(1000000 / freq / 2);
+  digitalWrite(oscillatorPin, LOW);
+  delayMicroseconds(1000000 / freq / 2);
+}
+```
+
+Part 4. This is my code that play the begging of "Ode to Joy". As you push the buttonPin it will send a signal to play through all the prescribed playFrequencies, pausing at specified times in order to give the right effects. <a href=https://www.youtube.com/watch?v=ENKacB-hghM&list=UU6CqOBUWgHrd4C1X4tnKVfQ >Here</a> is the link to the video of my code in action.
+
+```
+int oscillatorPin = 14;
+int ledPin = 13;
+int buttonPin = 12;
+ 
+unsigned long triggerTime = 0;
+ 
+int middleEFrequency = 329;
+int middleFFrequency = 349;
+int middleGFrequency = 392;
+int middleDFrequency = 293;
+int middleCFrequency = 261;
+ 
+void setup() {
+pinMode(oscillatorPin, OUTPUT);
+pinMode(ledPin, OUTPUT);
+pinMode(buttonPin, INPUT);
+}
+ 
+void loop() {
+ 
+  if(digitalRead(buttonPin) == HIGH) {
+ 
+    digitalWrite(ledPin, HIGH);
+ 
+    triggerTime = millis();
+    while(millis() < triggerTime + 500) {
+      playFrequency(middleEFrequency);
+    }
+    
+   delay(5);
+    
+    triggerTime = millis();
+    while(millis() < triggerTime + 500) {
+      playFrequency(middleEFrequency);
+    }
+ 
+    triggerTime = millis();
+    while(millis() < triggerTime + 500) {
+      playFrequency(middleFFrequency);
+    }
+ 
+    triggerTime = millis();
+    while(millis() < triggerTime + 500) {
+      playFrequency(middleGFrequency);
+    }
+ 
+    delay(5);
+ 
+    triggerTime = millis();
+    while(millis() < triggerTime + 500) {
+      playFrequency(middleGFrequency);
+    }
+ 
+    delay(5);
+ 
+     triggerTime = millis();
+    while(millis() < triggerTime + 500) {
+      playFrequency(middleFFrequency);
+    }
+    
+    triggerTime = millis();
+    while(millis() < triggerTime + 500) {
+      playFrequency(middleEFrequency);
+    }
+ 
+    triggerTime = millis();
+    while(millis() < triggerTime + 500) {
+      playFrequency(middleDFrequency);
+    }
+ 
+    triggerTime = millis();
+    while(millis() < triggerTime + 500) {
+      playFrequency(middleCFrequency);
+    }
+ 
+    delay(5);
+ 
+    triggerTime = millis();
+    while(millis() < triggerTime + 500) {
+      playFrequency(middleCFrequency);
+    }
+    
+    triggerTime = millis();
+    while(millis() < triggerTime + 500) {
+      playFrequency(middleDFrequency);
+    }
+ 
+    triggerTime = millis();
+    while(millis() < triggerTime + 500) {
+      playFrequency(middleEFrequency);
+    }
+ 
+   delay(5);
+ 
+    triggerTime = millis();
+    while(millis() < triggerTime + 750) {
+      playFrequency(middleEFrequency);
+    }
+ 
+    triggerTime = millis();
+    while(millis() < triggerTime + 250) {
+      playFrequency(middleDFrequency);
+    }
+ 
+    delay(5);
+ 
+    triggerTime = millis();
+    while(millis() < triggerTime + 500) {
+      playFrequency(middleDFrequency);
+    }
+ 
+    delay(200);
+ 
+  } else {
+    digitalWrite(ledPin, LOW);
+  }
+}
+ 
+void playFrequency(int freq) {
+  digitalWrite(oscillatorPin, HIGH);
+  delayMicroseconds(1000000 / freq / 2);
+  digitalWrite(oscillatorPin, LOW);
+  delayMicroseconds(1000000 / freq / 2);
+}
+
+```
 Week 4
 ---
 
