@@ -66,6 +66,541 @@
 <hr class="divider">
 
 
+<h2>Week 5</h2>
+
+<p>Part 1a</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>int ledPin = 13;
+</span><span class='line'> 
+</span><span class='line'>void setup() {
+</span><span class='line'>  Serial.begin(9600);
+</span><span class='line'>  pinMode(ledPin, OUTPUT);
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void loop() {
+</span><span class='line'>  for(int i = 0; i &lt; 10; i++) {
+</span><span class='line'>    Serial.println(i);
+</span><span class='line'>    digitalWrite(ledPin, HIGH);
+</span><span class='line'>    delay(250);
+</span><span class='line'>    digitalWrite(ledPin, LOW);
+</span><span class='line'>    delay(250);
+</span><span class='line'>  }
+</span><span class='line'> 
+</span><span class='line'>  delay(5000);
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>//The function "for(int i = 0; i &lt; 10; i++)" is telling us how many times the LED blinks in a loop. The smaller number is subtracted from the bigger number to get the specified amount of blinks per loop. There is also a five second delay between loops.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Part 1b</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>int ledPin = 13; //creates an integer value called ledPin at a value of 13
+</span><span class='line'>int led2Pin = 14; //creates an integer value called led2Pin at a value of 14
+</span><span class='line'> 
+</span><span class='line'>void setup() {
+</span><span class='line'>  Serial.begin(9600);
+</span><span class='line'>  pinMode(ledPin, OUTPUT); //sets ledPin to OUTPUT
+</span><span class='line'>  pinMode(led2Pin, OUTPUT); //sets led2Pin to OUTPUT
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void loop() {
+</span><span class='line'>  for(int i = 0; i &lt; 10; i++) { //says the light will blink 10 times before the loop resets
+</span><span class='line'>    Serial.println(i);
+</span><span class='line'>    blinkLED(ledPin, 500); //ledpin will blink for .5 seconds
+</span><span class='line'>    blinkLED(led2Pin, i * 100); //led2Pin will blink for whatever i is set to multiplied by 100 milliseconds
+</span><span class='line'>  }
+</span><span class='line'> 
+</span><span class='line'>  delay(5000); //delays for 5 seconds before looping again
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void blinkLED(int blinkPin, int blinkLength) { //Creates a function that is called blinkLED. It will accept integer values called blinkPin and blinkLength
+</span><span class='line'>  digitalWrite(blinkPin, HIGH); //turns blinkPin on
+</span><span class='line'>  delay(blinkLength); //sets the time that the blinkPin will be on
+</span><span class='line'>  digitalWrite(blinkPin, LOW); //turns blinkPin off
+</span><span class='line'>  delay(blinkLength); //sets the time that the blinkPin will be off
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Part 2</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>int ledPin = 13;
+</span><span class='line'>int led2Pin = 14;
+</span><span class='line'>int led3Pin = 15;
+</span><span class='line'>int buttonPin = 12;
+</span><span class='line'> 
+</span><span class='line'>//an unsigned long is type of variable just like int,
+</span><span class='line'>//but it can hold much bigger numbers, which can
+</span><span class='line'>//be useful sometimes
+</span><span class='line'>unsigned long millisecondsSinceReset = 0;
+</span><span class='line'> 
+</span><span class='line'>void setup() {
+</span><span class='line'>  Serial.begin(9600);
+</span><span class='line'>  pinMode(ledPin, OUTPUT);
+</span><span class='line'>  pinMode(led2Pin, OUTPUT);
+</span><span class='line'>  pinMode(led3Pin, OUTPUT);
+</span><span class='line'>  pinMode(buttonPin, INPUT);
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void loop() { //creates a loop
+</span><span class='line'> 
+</span><span class='line'>  millisecondsSinceReset = millis(); //millisecondsSinceReset is set to equal millis which is equal to the number of milliseconds since you last reset your teensy
+</span><span class='line'> 
+</span><span class='line'>  if(millisecondsSinceReset &lt; 3000) { //if it has been less than 3 seconds since the last reset
+</span><span class='line'>    digitalWrite(ledPin, HIGH); //ledPin will be HIGH
+</span><span class='line'>    digitalWrite(led2Pin, LOW); //led2Pin will be LOW
+</span><span class='line'>    digitalWrite(led3Pin, LOW); //led3Pin will be LOW
+</span><span class='line'>  } else if (millisecondsSinceReset &lt; 5000) { //if it has been less that 5 seconds since the last reset but more than 3 seconds
+</span><span class='line'>    blinkLED(led2Pin, 150); //led2Pin will blink every .15 seconds
+</span><span class='line'>  } else if (millisecondsSinceReset &lt; 10000) { //if it has been less that 10 seconds since the last reset but more than 5 seconds
+</span><span class='line'>    blinkLED(led3Pin, 100); //led3Pin will blink every .1 seconds
+</span><span class='line'>  } else { //anything after 10 seconds
+</span><span class='line'>    digitalWrite(ledPin, LOW); //ledPin will be LOW
+</span><span class='line'>    digitalWrite(led2Pin, LOW); //led2Pin will be LOW
+</span><span class='line'>    digitalWrite(led3Pin, HIGH); //led3Pin will be HIGH
+</span><span class='line'>  }
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void blinkLED(int blinkPin, int blinkLength) {
+</span><span class='line'>  digitalWrite(blinkPin, HIGH);
+</span><span class='line'>  delay(blinkLength);
+</span><span class='line'>  digitalWrite(blinkPin, LOW);
+</span><span class='line'>  delay(blinkLength);
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Part 3</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>int oscillatorPin = 14;
+</span><span class='line'>int ledPin = 13;
+</span><span class='line'>int buttonPin = 12;
+</span><span class='line'> 
+</span><span class='line'>unsigned long triggerTime = 0;
+</span><span class='line'> 
+</span><span class='line'>int middleCFrequency = 261;
+</span><span class='line'>int middleDFrequency = 294;
+</span><span class='line'> 
+</span><span class='line'>void setup() {
+</span><span class='line'>pinMode(oscillatorPin, OUTPUT);
+</span><span class='line'>pinMode(ledPin, OUTPUT);
+</span><span class='line'>pinMode(buttonPin, INPUT);
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void loop() {
+</span><span class='line'> 
+</span><span class='line'>  if(digitalRead(buttonPin) == HIGH) {
+</span><span class='line'> 
+</span><span class='line'>    digitalWrite(ledPin, HIGH);
+</span><span class='line'> 
+</span><span class='line'>    triggerTime = millis();
+</span><span class='line'>    while(millis() &lt; triggerTime + 1000) {
+</span><span class='line'>      playFrequency(middleCFrequency);
+</span><span class='line'>    }
+</span><span class='line'> 
+</span><span class='line'>    triggerTime = millis();
+</span><span class='line'>    while(millis() &lt; triggerTime + 500) {
+</span><span class='line'>      playFrequency(middleDFrequency);
+</span><span class='line'>    }
+</span><span class='line'> 
+</span><span class='line'>    delay(200);
+</span><span class='line'> 
+</span><span class='line'>  } else {
+</span><span class='line'>    digitalWrite(ledPin, LOW);
+</span><span class='line'>  }
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void playFrequency(int freq) {
+</span><span class='line'>  digitalWrite(oscillatorPin, HIGH);
+</span><span class='line'>  delayMicroseconds(1000000 / freq / 2);
+</span><span class='line'>  digitalWrite(oscillatorPin, LOW);
+</span><span class='line'>  delayMicroseconds(1000000 / freq / 2);
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Part 4. This is my code that play the begging of &ldquo;Ode to Joy&rdquo;. As you push the buttonPin it will send a signal to play through all the prescribed playFrequencies, pausing at specified times in order to give the right effects. <a href=https://www.youtube.com/watch?v=ENKacB-hghM&list=UU6CqOBUWgHrd4C1X4tnKVfQ >Here</a> is the link to the video of my code in action.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>int oscillatorPin = 14;
+</span><span class='line'>int ledPin = 13;
+</span><span class='line'>int buttonPin = 12;
+</span><span class='line'> 
+</span><span class='line'>unsigned long triggerTime = 0;
+</span><span class='line'> 
+</span><span class='line'>int middleEFrequency = 329;
+</span><span class='line'>int middleFFrequency = 349;
+</span><span class='line'>int middleGFrequency = 392;
+</span><span class='line'>int middleDFrequency = 293;
+</span><span class='line'>int middleCFrequency = 261;
+</span><span class='line'> 
+</span><span class='line'>void setup() {
+</span><span class='line'>pinMode(oscillatorPin, OUTPUT);
+</span><span class='line'>pinMode(ledPin, OUTPUT);
+</span><span class='line'>pinMode(buttonPin, INPUT);
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void loop() {
+</span><span class='line'> 
+</span><span class='line'>  if(digitalRead(buttonPin) == HIGH) {
+</span><span class='line'> 
+</span><span class='line'>    digitalWrite(ledPin, HIGH);
+</span><span class='line'> 
+</span><span class='line'>    triggerTime = millis();
+</span><span class='line'>    while(millis() &lt; triggerTime + 500) {
+</span><span class='line'>      playFrequency(middleEFrequency);
+</span><span class='line'>    }
+</span><span class='line'>    
+</span><span class='line'>   delay(5);
+</span><span class='line'>    
+</span><span class='line'>    triggerTime = millis();
+</span><span class='line'>    while(millis() &lt; triggerTime + 500) {
+</span><span class='line'>      playFrequency(middleEFrequency);
+</span><span class='line'>    }
+</span><span class='line'> 
+</span><span class='line'>    triggerTime = millis();
+</span><span class='line'>    while(millis() &lt; triggerTime + 500) {
+</span><span class='line'>      playFrequency(middleFFrequency);
+</span><span class='line'>    }
+</span><span class='line'> 
+</span><span class='line'>    triggerTime = millis();
+</span><span class='line'>    while(millis() &lt; triggerTime + 500) {
+</span><span class='line'>      playFrequency(middleGFrequency);
+</span><span class='line'>    }
+</span><span class='line'> 
+</span><span class='line'>    delay(5);
+</span><span class='line'> 
+</span><span class='line'>    triggerTime = millis();
+</span><span class='line'>    while(millis() &lt; triggerTime + 500) {
+</span><span class='line'>      playFrequency(middleGFrequency);
+</span><span class='line'>    }
+</span><span class='line'> 
+</span><span class='line'>    delay(5);
+</span><span class='line'> 
+</span><span class='line'>     triggerTime = millis();
+</span><span class='line'>    while(millis() &lt; triggerTime + 500) {
+</span><span class='line'>      playFrequency(middleFFrequency);
+</span><span class='line'>    }
+</span><span class='line'>    
+</span><span class='line'>    triggerTime = millis();
+</span><span class='line'>    while(millis() &lt; triggerTime + 500) {
+</span><span class='line'>      playFrequency(middleEFrequency);
+</span><span class='line'>    }
+</span><span class='line'> 
+</span><span class='line'>    triggerTime = millis();
+</span><span class='line'>    while(millis() &lt; triggerTime + 500) {
+</span><span class='line'>      playFrequency(middleDFrequency);
+</span><span class='line'>    }
+</span><span class='line'> 
+</span><span class='line'>    triggerTime = millis();
+</span><span class='line'>    while(millis() &lt; triggerTime + 500) {
+</span><span class='line'>      playFrequency(middleCFrequency);
+</span><span class='line'>    }
+</span><span class='line'> 
+</span><span class='line'>    delay(5);
+</span><span class='line'> 
+</span><span class='line'>    triggerTime = millis();
+</span><span class='line'>    while(millis() &lt; triggerTime + 500) {
+</span><span class='line'>      playFrequency(middleCFrequency);
+</span><span class='line'>    }
+</span><span class='line'>    
+</span><span class='line'>    triggerTime = millis();
+</span><span class='line'>    while(millis() &lt; triggerTime + 500) {
+</span><span class='line'>      playFrequency(middleDFrequency);
+</span><span class='line'>    }
+</span><span class='line'> 
+</span><span class='line'>    triggerTime = millis();
+</span><span class='line'>    while(millis() &lt; triggerTime + 500) {
+</span><span class='line'>      playFrequency(middleEFrequency);
+</span><span class='line'>    }
+</span><span class='line'> 
+</span><span class='line'>   delay(5);
+</span><span class='line'> 
+</span><span class='line'>    triggerTime = millis();
+</span><span class='line'>    while(millis() &lt; triggerTime + 750) {
+</span><span class='line'>      playFrequency(middleEFrequency);
+</span><span class='line'>    }
+</span><span class='line'> 
+</span><span class='line'>    triggerTime = millis();
+</span><span class='line'>    while(millis() &lt; triggerTime + 250) {
+</span><span class='line'>      playFrequency(middleDFrequency);
+</span><span class='line'>    }
+</span><span class='line'> 
+</span><span class='line'>    delay(5);
+</span><span class='line'> 
+</span><span class='line'>    triggerTime = millis();
+</span><span class='line'>    while(millis() &lt; triggerTime + 500) {
+</span><span class='line'>      playFrequency(middleDFrequency);
+</span><span class='line'>    }
+</span><span class='line'> 
+</span><span class='line'>    delay(200);
+</span><span class='line'> 
+</span><span class='line'>  } else {
+</span><span class='line'>    digitalWrite(ledPin, LOW);
+</span><span class='line'>  }
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void playFrequency(int freq) {
+</span><span class='line'>  digitalWrite(oscillatorPin, HIGH);
+</span><span class='line'>  delayMicroseconds(1000000 / freq / 2);
+</span><span class='line'>  digitalWrite(oscillatorPin, LOW);
+</span><span class='line'>  delayMicroseconds(1000000 / freq / 2);
+</span><span class='line'>}
+</span></code></pre></td></tr></table></div></figure>
+
+
 <h2>Week 4</h2>
 
 <p>In this lab we used our first Lab&rsquo;s code as an oscillator. This made a very basic monophonic squarewave synth that can hit different notes. My breadboard could only fit five buttons and therefore could only play 5 programmable notes.</p>

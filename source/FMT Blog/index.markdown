@@ -7,6 +7,21 @@ sharing: true
 footer: true
 ---
 
+Directional Response
+---
+
+For this experiment I worked with Jake, Emre, and Lauren and we used Studio E. We placed the Eon speaker near the front desk, due to the excess of chairs this was the best place we could place the speaker without entirely rearranging the studio. Sadly this positioning put the back of the speaker 5 feet from the nearest wall which could have messed with some of our readings due to sound reverberation off the wall. We then used the SPL meter to measure frequencies 3 feet and 1.5 feet from the speaker.
+
+With few exceptions, as we rotated around the speaker, the SPL readings decreased until we hit 180 degrees, then the readings began to climb again. As you can see in the graphs below all of my frequencies are highest at the 0 degree point, and most of them are lowest at the 180 degree mark. There is some variation in the SPL readings due to the positioning of the speaker (being near to a wall), as well as the hum from the air conditioning units in the studio.
+
+This experiment actually surprised me. I had expected that the higher frequencies would be significantly lower on the SPL meter if we weren’t standing directly in front of the speaker. This is because higher frequencies are more directional than low frequencies (well known as being almost omnidirectional). However, if you look at the polar charts below, you will see that the higher frequencies do not make a cardioid pattern like I had expected. Part of my thesis was based off of an ideal situation which cannot be created unless we were in an anechoic chamber. If that were the case, then the higher frequencies would have extremely high SPL readings when the meter was directly in front of the speaker and lower readings in any other position. Low frequencies in an anechoic chamber would have the same reading in any location due to the omnidirectional trait of low frequencies. 
+
+
+{% img http://i.imgur.com/Gt4UdbV.png %}
+
+{% img http://i.imgur.com/GoZjIpj.png %}
+
+
 Distance vs. Intensity
 ---
 
