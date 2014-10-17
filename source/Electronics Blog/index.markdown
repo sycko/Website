@@ -7,6 +7,101 @@ sharing: true
 footer: true
 ---
 
+Week 6
+---
+
+MIDI Out Final Part
+
+```
+int ledPin = 13;
+int oscillatorPin = 14;
+int oscillator2Pin = 14;
+int potVal = 0;
+int pot = 15;
+int buttonPin = 16;
+ 
+int midiChannel = 3;
+ 
+int currentMidiVelocity = 0;
+int currentMidiNote = 0;
+float currentFrequency = 0;
+ 
+//this is an array of mote frequencies mapped
+//to MIDI notes.  It's crucial to what we're doing
+//but don't worry about it for now unless you
+//really want to
+int midiFreqs[] = {8, 8, 9, 9, 10, 10, 11, 12, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23, 24, 25, 27, 29, 30, 32, 34, 36, 38, 41, 43, 46, 48, 51, 55, 58, 61, 65, 69, 73, 77, 82, 87, 92, 97, 103, 110, 116, 123, 130, 138, 146, 155, 164, 174, 184, 195, 207, 220, 233, 246, 261, 277, 293, 311, 329, 349, 369, 391, 415, 440, 466, 493, 523, 554, 587, 622, 659, 698, 739, 783, 830, 880, 932, 987, 1046, 1108, 1174, 1244, 1318, 1396, 1479, 1567, 1661, 1760, 1864, 1975, 2093, 2217, 2349, 2489, 2637, 2793, 2959, 3135, 3322, 3520, 3729, 3951, 4186, 4434, 4698, 4978, 5274, 5587, 5919, 6271, 6644, 7040, 7458, 7902, 8372, 8869, 9397, 9956, 10548, 11175, 11839, 12543};
+ 
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  pinMode(oscillatorPin, OUTPUT);
+  pinMode(buttonPin, INPUT);
+   
+  //These two things here are called 'event handlers'.  Their one
+  //argument is another function.  They set it so that when
+  //you get a noteOn or noteOff event, the function you use
+  //as the argument immediately runs one time.
+  usbMIDI.setHandleNoteOn(onReceiveNoteOnMessage); 
+  usbMIDI.setHandleNoteOff(onReceiveNoteOffMessage); 
+}
+ 
+void loop() {
+  //you need this happening every loop for the event handlers
+  //to work, just trust me
+  usbMIDI.read();
+  //this is defined below and should be self explanatory
+  doAudio();
+  
+}
+ 
+void onReceiveNoteOnMessage(byte channel, byte note, byte velocity) {
+  if(channel == midiChannel) {
+    currentMidiNote = note;
+    currentMidiVelocity = velocity;
+  }
+}
+ 
+void onReceiveNoteOffMessage(byte channel, byte note, byte velocity) {
+  if(channel == midiChannel) {
+    currentMidiVelocity = 0;
+  }
+}
+ 
+void doAudio() {
+  //a noteOff message always has a velocity of zero
+  if(currentMidiVelocity == 0) {              
+    digitalWrite(ledPin, LOW);
+  //otherwise its greater than 0 so its a noteOn, we play a note
+  } else {
+    digitalWrite(ledPin, HIGH);
+    playToneFromMidiNote();
+    
+  }
+}
+ 
+void playToneFromMidiNote() {
+  currentFrequency = getFreqFromMidiNote(currentMidiNote);
+  playFrequency(currentFrequency);
+}
+ 
+void playFrequency(int freq) {
+  digitalWrite(oscillatorPin, HIGH);
+  delayMicroseconds(1000000 / freq / 2);
+  digitalWrite(oscillatorPin, LOW);
+  delayMicroseconds(1000000 / freq / 2);
+  if(digitalRead(buttonPin) == HIGH) {
+    potVal = analogRead(pot);
+    digitalWrite(oscillatorPin, HIGH);
+    delay(potVal / freq * 2);
+    digitalWrite(oscillatorPin, LOW);
+    delay(potVal / freq * 2); 
+  }
+}
+int getFreqFromMidiNote(int theNote) {
+  return midiFreqs[theNote];
+}
+```
+
 Week 5
 ---
 
