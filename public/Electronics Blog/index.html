@@ -66,6 +66,108 @@
 <hr class="divider">
 
 
+<p>Week 7</p>
+
+<hr />
+
+<h1>include &lt;SPI.h></h1>
+
+<p>IntervalTimer oscTimer;</p>
+
+<p>int buttonPin = 7;
+int oscillatorPin = 8;
+int slaveSelectPin = 10;</p>
+
+<p>boolean ledState = LOW;
+int digipotHighestStep = 127;
+int attackVal = 0;
+int sustainVal = 0;
+int decayVal = 0;</p>
+
+<p>void setup() {
+  pinMode(oscillatorPin, OUTPUT);
+  pinMode(buttonPin, INPUT);
+  pinMode(slaveSelectPin, OUTPUT);</p>
+
+<p>  SPI.begin();
+  digitalWrite(slaveSelectPin, HIGH);<br/>
+  digitalPotWrite(0);</p>
+
+<p>  //don&rsquo;t mess with this, just leave it
+  oscTimer.begin(playNote, 1000000/261/2);
+}</p>
+
+<p>void loop() {
+ if(digitalRead(buttonPin) == HIGH) {</p>
+
+<pre><code>attack();
+sustain();
+decay();
+</code></pre>
+
+<p> }
+ else if(digitalRead(buttonPin) == LOW) {</p>
+
+<pre><code>   digitalWrite(oscillatorPin, LOW);    
+}  
+</code></pre>
+
+<p>}</p>
+
+<p>void attack() {</p>
+
+<pre><code>attackVal = analogRead(0);
+for(int i=0; i&lt;=digipotHighestStep; i++) {
+  attackVal = analogRead(0);    
+  digitalPotWrite(i);
+  delay(attackVal/50);
+</code></pre>
+
+<p>   }<br/>
+  }</p>
+
+<p>void sustain() {
+  sustainVal = analogRead(0);
+  delay(sustainVal);
+}</p>
+
+<p>void decay() {
+  decayVal = analogRead(0);
+  for(int i=digipotHighestStep; i&lt;=digipotHighestStep &amp;&amp; i>0; i&mdash;) {</p>
+
+<pre><code>decayVal = analogRead(0);
+digitalPotWrite(i);
+delay(decayVal/50);
+</code></pre>
+
+<p>  }
+}</p>
+
+<p>void digitalPotWrite(int val) {
+  digitalWrite(slaveSelectPin, LOW);
+  SPI.transfer(0);
+  SPI.transfer(val);
+  digitalWrite(slaveSelectPin, HIGH);
+}</p>
+
+<p>//this is for the oscillator. don&rsquo;t touch this function.
+void playNote() {
+  if (ledState == LOW) {</p>
+
+<pre><code>ledState = HIGH;
+</code></pre>
+
+<p>  } else {</p>
+
+<pre><code>ledState = LOW;
+</code></pre>
+
+<p>  }
+  digitalWrite(oscillatorPin, ledState);
+}</p>
+
+<hr />
+
 <h2>Week 6</h2>
 
 <p>MIDI Out Final Part</p>

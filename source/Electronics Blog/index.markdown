@@ -9,7 +9,7 @@ footer: true
 
 Week 7
 
----
+```
 
 #include <SPI.h>
  
@@ -90,7 +90,7 @@ void playNote() {
   digitalWrite(oscillatorPin, ledState);
 }
 
----
+```
 
 Week 6
 ---
