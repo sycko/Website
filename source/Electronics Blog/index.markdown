@@ -7,6 +7,91 @@ sharing: true
 footer: true
 ---
 
+Week 7
+
+---
+
+#include <SPI.h>
+ 
+IntervalTimer oscTimer;
+ 
+int buttonPin = 7;
+int oscillatorPin = 8;
+int slaveSelectPin = 10;
+ 
+boolean ledState = LOW;
+int digipotHighestStep = 127;
+int attackVal = 0;
+int sustainVal = 0;
+int decayVal = 0;
+
+ 
+void setup() {
+  pinMode(oscillatorPin, OUTPUT);
+  pinMode(buttonPin, INPUT);
+  pinMode(slaveSelectPin, OUTPUT);
+ 
+  SPI.begin();
+  digitalWrite(slaveSelectPin, HIGH);  
+  digitalPotWrite(0);
+   
+  //don't mess with this, just leave it
+  oscTimer.begin(playNote, 1000000/261/2);
+}
+ 
+void loop() {
+ if(digitalRead(buttonPin) == HIGH) {
+    attack();
+    sustain();
+    decay();
+ }
+ else if(digitalRead(buttonPin) == LOW) {
+       digitalWrite(oscillatorPin, LOW);    
+    }  
+}
+
+void attack() {    
+    attackVal = analogRead(0);
+    for(int i=0; i<=digipotHighestStep; i++) {
+      attackVal = analogRead(0);    
+      digitalPotWrite(i);
+      delay(attackVal/50);
+   }  
+  }
+
+void sustain() {
+  sustainVal = analogRead(0);
+  delay(sustainVal);
+}
+
+void decay() {
+  decayVal = analogRead(0);
+  for(int i=digipotHighestStep; i<=digipotHighestStep && i>0; i--) {
+    decayVal = analogRead(0);
+    digitalPotWrite(i);
+    delay(decayVal/50);
+  }
+}
+
+void digitalPotWrite(int val) {
+  digitalWrite(slaveSelectPin, LOW);
+  SPI.transfer(0);
+  SPI.transfer(val);
+  digitalWrite(slaveSelectPin, HIGH);
+}
+ 
+//this is for the oscillator. don't touch this function.
+void playNote() {
+  if (ledState == LOW) {
+    ledState = HIGH;
+  } else {
+    ledState = LOW;
+  }
+  digitalWrite(oscillatorPin, ledState);
+}
+
+---
+
 Week 6
 ---
 

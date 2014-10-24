@@ -66,6 +66,186 @@
 <hr class="divider">
 
 
+<h2>Week 6</h2>
+
+<p>MIDI Out Final Part</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>int ledPin = 13;
+</span><span class='line'>int oscillatorPin = 14;
+</span><span class='line'>int oscillator2Pin = 14;
+</span><span class='line'>int potVal = 0;
+</span><span class='line'>int pot = 15;
+</span><span class='line'>int buttonPin = 16;
+</span><span class='line'> 
+</span><span class='line'>int midiChannel = 3;
+</span><span class='line'> 
+</span><span class='line'>int currentMidiVelocity = 0;
+</span><span class='line'>int currentMidiNote = 0;
+</span><span class='line'>float currentFrequency = 0;
+</span><span class='line'> 
+</span><span class='line'>//this is an array of mote frequencies mapped
+</span><span class='line'>//to MIDI notes.  It's crucial to what we're doing
+</span><span class='line'>//but don't worry about it for now unless you
+</span><span class='line'>//really want to
+</span><span class='line'>int midiFreqs[] = {8, 8, 9, 9, 10, 10, 11, 12, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23, 24, 25, 27, 29, 30, 32, 34, 36, 38, 41, 43, 46, 48, 51, 55, 58, 61, 65, 69, 73, 77, 82, 87, 92, 97, 103, 110, 116, 123, 130, 138, 146, 155, 164, 174, 184, 195, 207, 220, 233, 246, 261, 277, 293, 311, 329, 349, 369, 391, 415, 440, 466, 493, 523, 554, 587, 622, 659, 698, 739, 783, 830, 880, 932, 987, 1046, 1108, 1174, 1244, 1318, 1396, 1479, 1567, 1661, 1760, 1864, 1975, 2093, 2217, 2349, 2489, 2637, 2793, 2959, 3135, 3322, 3520, 3729, 3951, 4186, 4434, 4698, 4978, 5274, 5587, 5919, 6271, 6644, 7040, 7458, 7902, 8372, 8869, 9397, 9956, 10548, 11175, 11839, 12543};
+</span><span class='line'> 
+</span><span class='line'>void setup() {
+</span><span class='line'>  pinMode(ledPin, OUTPUT);
+</span><span class='line'>  pinMode(oscillatorPin, OUTPUT);
+</span><span class='line'>  pinMode(buttonPin, INPUT);
+</span><span class='line'>   
+</span><span class='line'>  //These two things here are called 'event handlers'.  Their one
+</span><span class='line'>  //argument is another function.  They set it so that when
+</span><span class='line'>  //you get a noteOn or noteOff event, the function you use
+</span><span class='line'>  //as the argument immediately runs one time.
+</span><span class='line'>  usbMIDI.setHandleNoteOn(onReceiveNoteOnMessage); 
+</span><span class='line'>  usbMIDI.setHandleNoteOff(onReceiveNoteOffMessage); 
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void loop() {
+</span><span class='line'>  //you need this happening every loop for the event handlers
+</span><span class='line'>  //to work, just trust me
+</span><span class='line'>  usbMIDI.read();
+</span><span class='line'>  //this is defined below and should be self explanatory
+</span><span class='line'>  doAudio();
+</span><span class='line'>  
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void onReceiveNoteOnMessage(byte channel, byte note, byte velocity) {
+</span><span class='line'>  if(channel == midiChannel) {
+</span><span class='line'>    currentMidiNote = note;
+</span><span class='line'>    currentMidiVelocity = velocity;
+</span><span class='line'>  }
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void onReceiveNoteOffMessage(byte channel, byte note, byte velocity) {
+</span><span class='line'>  if(channel == midiChannel) {
+</span><span class='line'>    currentMidiVelocity = 0;
+</span><span class='line'>  }
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void doAudio() {
+</span><span class='line'>  //a noteOff message always has a velocity of zero
+</span><span class='line'>  if(currentMidiVelocity == 0) {              
+</span><span class='line'>    digitalWrite(ledPin, LOW);
+</span><span class='line'>  //otherwise its greater than 0 so its a noteOn, we play a note
+</span><span class='line'>  } else {
+</span><span class='line'>    digitalWrite(ledPin, HIGH);
+</span><span class='line'>    playToneFromMidiNote();
+</span><span class='line'>    
+</span><span class='line'>  }
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void playToneFromMidiNote() {
+</span><span class='line'>  currentFrequency = getFreqFromMidiNote(currentMidiNote);
+</span><span class='line'>  playFrequency(currentFrequency);
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void playFrequency(int freq) {
+</span><span class='line'>  digitalWrite(oscillatorPin, HIGH);
+</span><span class='line'>  delayMicroseconds(1000000 / freq / 2);
+</span><span class='line'>  digitalWrite(oscillatorPin, LOW);
+</span><span class='line'>  delayMicroseconds(1000000 / freq / 2);
+</span><span class='line'>  if(digitalRead(buttonPin) == HIGH) {
+</span><span class='line'>    potVal = analogRead(pot);
+</span><span class='line'>    digitalWrite(oscillatorPin, HIGH);
+</span><span class='line'>    delay(potVal / freq * 2);
+</span><span class='line'>    digitalWrite(oscillatorPin, LOW);
+</span><span class='line'>    delay(potVal / freq * 2); 
+</span><span class='line'>  }
+</span><span class='line'>}
+</span><span class='line'>int getFreqFromMidiNote(int theNote) {
+</span><span class='line'>  return midiFreqs[theNote];
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
 <h2>Week 5</h2>
 
 <p>Part 1a</p>
