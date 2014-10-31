@@ -7,8 +7,127 @@ sharing: true
 footer: true
 ---
 
-Week 7
+Week 8
+---
+```
+#include <SPI.h>
+ 
+IntervalTimer timer1;
+IntervalTimer timer2;
+boolean osc1State = LOW;
+boolean osc2State = LOW;
+ 
+int maxDigipotVal = 255;
+ 
+const int osc1Pin = 7;
+int slave1SelectPin = 10;
+int digipot1FadeSpeed = 0;
+unsigned long nextDigipot1Step = 0;
+String digipot1State = "attack";
+int currentDigipot1Val = 0;
 
+ 
+const int osc2Pin = 8;
+int slave2SelectPin = 9;
+int digipot2FadeSpeed = 0;
+unsigned long nextDigipot2Step = 0;
+String digipot2State = "attack";
+int currentDigipot2Val = 0;
+
+
+void setup() {
+  SPI.begin();
+  Serial.begin(9600);
+  pinMode(osc1Pin, OUTPUT);
+  pinMode(osc2Pin, OUTPUT);
+  pinMode(slave1SelectPin, OUTPUT);
+  pinMode(slave2SelectPin, OUTPUT);
+  digitalWrite(slave1SelectPin, HIGH);  
+  digitalWrite(slave2SelectPin, HIGH);
+  timer1.begin(playNote1, 1000000/261/2);  
+  timer2.begin(playNote2, 1000000/440/2);  
+}
+ 
+void loop() {
+  doADSR1();
+  doADSR2();
+}
+ 
+void doADSR1() {
+   
+  if(millis() > nextDigipot1Step) { //if millis is greater than the nextDigipot1Step
+ 
+    if(digipot1State == "attack") { //if the digipot1State is set to attack
+      currentDigipot1Val = currentDigipot1Val + 1; //the currentDigipot1Val will be euqal to itself +1
+      if(currentDigipot1Val == maxDigipotVal) { //if the currentDigipot1Val equals the maxDigipotVal
+        digipot1State = "decay"; //change the digipot1State to decay
+      }
+    } else if(digipot1State == "decay") { //if the digipot1State is set to decay
+      currentDigipot1Val = currentDigipot1Val - 1; //subtract 1 from the currentDigipot1Val
+      digitalPotWrite(slave1SelectPin, currentDigipot1Val); //the digitalPotWrite responds to the slave1SelectPin and the current Digipot1Val      
+      if(currentDigipot1Val == 0) { //if the currentDigipot1Val is 0
+        digipot1State = "attack"; //change the digipot1state to attack
+      }      
+    }
+   
+    digipot1FadeSpeed = analogRead(0) / 100 + 1; //the digipot1FadeSpeed is read from the analog potometer
+    nextDigipot1Step = millis() + digipot1FadeSpeed; //the nextDigipot1step is equal the millis plus digipot1Fade Speed
+    digitalPotWrite(slave1SelectPin, currentDigipot1Val); //the digitalPotWrite responds to the slave1SelectPin and the current Digipot1Val
+    
+  }  
+}
+void doADSR2() {
+  
+  if(millis() > nextDigipot2Step) {
+ 
+    if(digipot2State == "attack") {
+      currentDigipot2Val = currentDigipot2Val + 1;
+      if(currentDigipot2Val == maxDigipotVal) {
+        digipot2State = "decay";
+      }
+    } else if(digipot2State == "decay") {
+      currentDigipot2Val = currentDigipot2Val - 1;
+      digitalPotWrite(slave2SelectPin, currentDigipot2Val);      
+      if(currentDigipot2Val == 0) {
+        digipot2State = "attack";
+      }      
+    }
+   
+    digipot2FadeSpeed = analogRead(1) / 100 + 1;  
+    nextDigipot2Step = millis() + digipot2FadeSpeed;
+    digitalPotWrite(slave2SelectPin, currentDigipot2Val);
+    
+  }  
+  }
+  
+void playNote1() {
+  if (osc1State == LOW) {
+    osc1State = HIGH;
+  } else {
+    osc1State = LOW;
+  }
+  digitalWrite(osc1Pin, osc1State);
+}
+ 
+void playNote2() {
+  if (osc2State == LOW) {
+    osc2State = HIGH;
+  } else {
+    osc2State = LOW;
+  }
+  digitalWrite(osc2Pin, osc2State);
+}
+ 
+void digitalPotWrite(int ssPin, int val) {
+  digitalWrite(ssPin, LOW);
+  SPI.transfer(0);
+  SPI.transfer(val);
+  digitalWrite(ssPin, HIGH);
+}
+```
+
+Week 7
+---
 ```
 
 #include <SPI.h>
