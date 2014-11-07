@@ -66,7 +66,239 @@
 <hr class="divider">
 
 
-<p>Week 7</p>
+<h2>Week 8</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#include &lt;SPI.h&gt;
+</span><span class='line'> 
+</span><span class='line'>IntervalTimer timer1;
+</span><span class='line'>IntervalTimer timer2;
+</span><span class='line'>boolean osc1State = LOW;
+</span><span class='line'>boolean osc2State = LOW;
+</span><span class='line'> 
+</span><span class='line'>int maxDigipotVal = 255;
+</span><span class='line'> 
+</span><span class='line'>const int osc1Pin = 7;
+</span><span class='line'>int slave1SelectPin = 10;
+</span><span class='line'>int digipot1FadeSpeed = 0;
+</span><span class='line'>unsigned long nextDigipot1Step = 0;
+</span><span class='line'>String digipot1State = "attack";
+</span><span class='line'>int currentDigipot1Val = 0;
+</span><span class='line'>
+</span><span class='line'> 
+</span><span class='line'>const int osc2Pin = 8;
+</span><span class='line'>int slave2SelectPin = 9;
+</span><span class='line'>int digipot2FadeSpeed = 0;
+</span><span class='line'>unsigned long nextDigipot2Step = 0;
+</span><span class='line'>String digipot2State = "attack";
+</span><span class='line'>int currentDigipot2Val = 0;
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>void setup() {
+</span><span class='line'>  SPI.begin();
+</span><span class='line'>  Serial.begin(9600);
+</span><span class='line'>  pinMode(osc1Pin, OUTPUT);
+</span><span class='line'>  pinMode(osc2Pin, OUTPUT);
+</span><span class='line'>  pinMode(slave1SelectPin, OUTPUT);
+</span><span class='line'>  pinMode(slave2SelectPin, OUTPUT);
+</span><span class='line'>  digitalWrite(slave1SelectPin, HIGH);  
+</span><span class='line'>  digitalWrite(slave2SelectPin, HIGH);
+</span><span class='line'>  timer1.begin(playNote1, 1000000/261/2);  
+</span><span class='line'>  timer2.begin(playNote2, 1000000/440/2);  
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void loop() {
+</span><span class='line'>  doADSR1();
+</span><span class='line'>  doADSR2();
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void doADSR1() {
+</span><span class='line'>   
+</span><span class='line'>  if(millis() &gt; nextDigipot1Step) { //if millis is greater than the nextDigipot1Step
+</span><span class='line'> 
+</span><span class='line'>    if(digipot1State == "attack") { //if the digipot1State is set to attack
+</span><span class='line'>      currentDigipot1Val = currentDigipot1Val + 1; //the currentDigipot1Val will be euqal to itself +1
+</span><span class='line'>      if(currentDigipot1Val == maxDigipotVal) { //if the currentDigipot1Val equals the maxDigipotVal
+</span><span class='line'>        digipot1State = "decay"; //change the digipot1State to decay
+</span><span class='line'>      }
+</span><span class='line'>    } else if(digipot1State == "decay") { //if the digipot1State is set to decay
+</span><span class='line'>      currentDigipot1Val = currentDigipot1Val - 1; //subtract 1 from the currentDigipot1Val
+</span><span class='line'>      digitalPotWrite(slave1SelectPin, currentDigipot1Val); //the digitalPotWrite responds to the slave1SelectPin and the current Digipot1Val      
+</span><span class='line'>      if(currentDigipot1Val == 0) { //if the currentDigipot1Val is 0
+</span><span class='line'>        digipot1State = "attack"; //change the digipot1state to attack
+</span><span class='line'>      }      
+</span><span class='line'>    }
+</span><span class='line'>   
+</span><span class='line'>    digipot1FadeSpeed = analogRead(0) / 100 + 1; //the digipot1FadeSpeed is read from the analog potometer
+</span><span class='line'>    nextDigipot1Step = millis() + digipot1FadeSpeed; //the nextDigipot1step is equal the millis plus digipot1Fade Speed
+</span><span class='line'>    digitalPotWrite(slave1SelectPin, currentDigipot1Val); //the digitalPotWrite responds to the slave1SelectPin and the current Digipot1Val
+</span><span class='line'>    
+</span><span class='line'>  }  
+</span><span class='line'>}
+</span><span class='line'>void doADSR2() {
+</span><span class='line'>  
+</span><span class='line'>  if(millis() &gt; nextDigipot2Step) {
+</span><span class='line'> 
+</span><span class='line'>    if(digipot2State == "attack") {
+</span><span class='line'>      currentDigipot2Val = currentDigipot2Val + 1;
+</span><span class='line'>      if(currentDigipot2Val == maxDigipotVal) {
+</span><span class='line'>        digipot2State = "decay";
+</span><span class='line'>      }
+</span><span class='line'>    } else if(digipot2State == "decay") {
+</span><span class='line'>      currentDigipot2Val = currentDigipot2Val - 1;
+</span><span class='line'>      digitalPotWrite(slave2SelectPin, currentDigipot2Val);      
+</span><span class='line'>      if(currentDigipot2Val == 0) {
+</span><span class='line'>        digipot2State = "attack";
+</span><span class='line'>      }      
+</span><span class='line'>    }
+</span><span class='line'>   
+</span><span class='line'>    digipot2FadeSpeed = analogRead(1) / 100 + 1;  
+</span><span class='line'>    nextDigipot2Step = millis() + digipot2FadeSpeed;
+</span><span class='line'>    digitalPotWrite(slave2SelectPin, currentDigipot2Val);
+</span><span class='line'>    
+</span><span class='line'>  }  
+</span><span class='line'>  }
+</span><span class='line'>  
+</span><span class='line'>void playNote1() {
+</span><span class='line'>  if (osc1State == LOW) {
+</span><span class='line'>    osc1State = HIGH;
+</span><span class='line'>  } else {
+</span><span class='line'>    osc1State = LOW;
+</span><span class='line'>  }
+</span><span class='line'>  digitalWrite(osc1Pin, osc1State);
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void playNote2() {
+</span><span class='line'>  if (osc2State == LOW) {
+</span><span class='line'>    osc2State = HIGH;
+</span><span class='line'>  } else {
+</span><span class='line'>    osc2State = LOW;
+</span><span class='line'>  }
+</span><span class='line'>  digitalWrite(osc2Pin, osc2State);
+</span><span class='line'>}
+</span><span class='line'> 
+</span><span class='line'>void digitalPotWrite(int ssPin, int val) {
+</span><span class='line'>  digitalWrite(ssPin, LOW);
+</span><span class='line'>  SPI.transfer(0);
+</span><span class='line'>  SPI.transfer(val);
+</span><span class='line'>  digitalWrite(ssPin, HIGH);
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Week 7</h2>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

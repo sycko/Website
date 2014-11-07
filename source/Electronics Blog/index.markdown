@@ -7,6 +7,143 @@ sharing: true
 footer: true
 ---
 
+Week 9
+---
+```
+IntervalTimer oscTimer;
+volatile int oscPin = 8;
+ 
+int led1Pin = 9;
+int led2Pin = 10;
+int led3Pin = 11;
+int led4Pin =12;
+
+int buttonPin1 = 7;
+int buttonPin2 = 19;
+
+ 
+int numSteps = 4;
+int tempo = 100;
+volatile int currentFrequency = 261;
+volatile int oscCounter = 0;
+volatile int oscState = HIGH;
+ 
+void setup() {
+  pinMode(oscPin, OUTPUT);
+  pinMode(led1Pin, OUTPUT);
+  pinMode(led2Pin, OUTPUT);
+  pinMode(led3Pin, OUTPUT);
+  pinMode(led4Pin, OUTPUT);
+  pinMode(buttonPin1, INPUT);
+  pinMode(buttonPin2, INPUT);
+ 
+  oscTimer.begin(playNote, 1);
+}
+
+
+ 
+void loop() {
+ if(digitalRead(buttonPin1) == LOW) { 
+   for(int i=0; i<numSteps; i++) {
+      setCurrentStep(i);
+      delay(analogRead(0));
+   }
+ }
+   else if(digitalRead(buttonPin1) == HIGH) {
+     for(int i=3; i<numSteps && i>=0; i--) {
+       setCurrentStep(i);
+       delay(analogRead(0));
+   } 
+  }
+   if(digitalRead(buttonPin2) == HIGH) {
+     Serial.println('hello');
+     for(int i=0; i<numSteps; i++) {
+       long stepValue = random(0,4);
+       setCurrentStep((int)stepValue);
+       delay(analogRead(0));
+       
+     }
+   }
+}
+ 
+void setCurrentStep(int stepNum) {
+  setCurrentLed(stepNum);
+  setTone(stepNum);
+  }
+ 
+void setTone(int stepNum) {
+  int currentPotVal;
+  if(stepNum == 0) {
+    currentPotVal = analogRead(4);
+  }
+  if(stepNum == 1) {
+    currentPotVal = analogRead(3);
+  }
+  if(stepNum == 2) {
+    currentPotVal = analogRead(2);
+  }
+  if(stepNum == 3) {
+    currentPotVal = analogRead(1);
+  }
+ 
+  currentFrequency = 50 + currentPotVal;
+  
+}
+
+void setCurrentLed(int stepNum) {
+  turnOffAllLeds();
+  turnOnLed(stepNum);
+}
+
+void turnOnLed(int stepNum) {
+  if(stepNum == 0) {
+    digitalWrite(led1Pin, HIGH);
+  }
+  else if(stepNum == 1) {
+    digitalWrite(led2Pin, HIGH);
+  }
+  else if(stepNum == 2) {
+    digitalWrite(led3Pin, HIGH);
+  }
+  else if(stepNum == 3) {
+    digitalWrite(led4Pin, HIGH);
+  }
+}
+
+void turnOffAllLeds() {
+  digitalWrite(led1Pin, LOW);
+  digitalWrite(led2Pin, LOW);
+  digitalWrite(led3Pin, LOW);
+  digitalWrite(led4Pin, LOW);
+}
+ 
+void playNote() {
+ 
+  volatile int stepsForNote = 1000000 / currentFrequency / 2;
+ 
+  oscCounter++;
+  if(oscCounter >= stepsForNote) {
+    oscCounter = 0;
+  }
+  if(oscCounter == 0) {
+ 
+    if(oscState == HIGH) {
+      digitalWrite(oscPin, LOW);
+      oscState = LOW;
+    }
+    else if(oscState == LOW) {
+      digitalWrite(oscPin, HIGH);
+      oscState = HIGH;
+    }
+  }
+}  
+```
+
+If I wanted to make a more advanced sequencer I could have it controlled by my DAW, or have it input MIDI into my DAW. In addition I could have multiple notes being played at the same time in a sequence, or I could have arpeggios happening on each note in the sequence.
+
+It would be nice to know how to change the sound of each note (square, sine, sawtooth), in addition it would be cool to know how to change the sound of each note with a potometer, or being able to gradually change the harshness of the sound.
+
+
 Week 8
 ---
 ```
