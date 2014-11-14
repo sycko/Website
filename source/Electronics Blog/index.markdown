@@ -7,6 +7,45 @@ sharing: true
 footer: true
 ---
 
+Week 10
+---
+```
+int oscillatorPin = 8;
+int sensorVal = 0;
+int mappedSensorVal = 0;
+
+
+
+void setup() {
+   pinMode(oscillatorPin, OUTPUT);
+   pinMode(sensorVal, INPUT);
+  
+}
+
+void loop() {
+   
+   sensorVal = analogRead(0); {
+   mappedSensorVal = map(sensorVal, 150, 550, 65, 523);
+
+
+      digitalWrite(oscillatorPin, HIGH);
+      delayMicroseconds(1000000 / mappedSensorVal / 2);
+      digitalWrite(oscillatorPin, LOW);
+      delayMicroseconds(1000000 / mappedSensorVal / 2);
+     
+   } 
+}
+
+void playFrequency(int freq) {
+   digitalWrite(oscillatorPin, HIGH);
+   delayMicroseconds(1000000 / freq / 2);
+   digitalWrite(oscillatorPin, LOW);
+   delayMicroseconds(1000000 / freq / 2);
+}
+```
+
+In regards to my final project, I am planning on making a button MIDI controller. Allowing me to use it as a makshift keyboard, or any other MIDI instrument. For this project I will need a couple of items that I don't already have. Including a 4x4 Adafruit Trellis Monochrome Driver, a silicone elastomer 4x4 button keypad. I will also need 4 10k potentiometers, LEDs, cutters, and jumper wires. I look forward to completing this project and using it in the future.
+
 Week 9
 ---
 ```
