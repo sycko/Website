@@ -66,6 +66,76 @@
 <hr class="divider">
 
 
+<h2>Week 10</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>int oscillatorPin = 8;
+</span><span class='line'>int sensorVal = 0;
+</span><span class='line'>int mappedSensorVal = 0;
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>void setup() {
+</span><span class='line'>   pinMode(oscillatorPin, OUTPUT);
+</span><span class='line'>   pinMode(sensorVal, INPUT);
+</span><span class='line'>  
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>void loop() {
+</span><span class='line'>   
+</span><span class='line'>   sensorVal = analogRead(0); {
+</span><span class='line'>   mappedSensorVal = map(sensorVal, 150, 550, 65, 523);
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>      digitalWrite(oscillatorPin, HIGH);
+</span><span class='line'>      delayMicroseconds(1000000 / mappedSensorVal / 2);
+</span><span class='line'>      digitalWrite(oscillatorPin, LOW);
+</span><span class='line'>      delayMicroseconds(1000000 / mappedSensorVal / 2);
+</span><span class='line'>     
+</span><span class='line'>   } 
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>void playFrequency(int freq) {
+</span><span class='line'>   digitalWrite(oscillatorPin, HIGH);
+</span><span class='line'>   delayMicroseconds(1000000 / freq / 2);
+</span><span class='line'>   digitalWrite(oscillatorPin, LOW);
+</span><span class='line'>   delayMicroseconds(1000000 / freq / 2);
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In regards to my final project, I am planning on making a button MIDI controller. Allowing me to use it as a makshift keyboard, or any other MIDI instrument. For this project I will need a couple of items that I don&rsquo;t already have. Including a 4x4 Adafruit Trellis Monochrome Driver, a silicone elastomer 4x4 button keypad. I will also need 4 10k potentiometers, LEDs, cutters, and jumper wires. I look forward to completing this project and using it in the future.</p>
+
 <h2>Week 9</h2>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>

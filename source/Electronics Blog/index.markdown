@@ -7,6 +7,10 @@ sharing: true
 footer: true
 ---
 
+Week 11
+---
+I am currently waiting on certain parts for my final project to be delivered. I hope to have all the parts necessary byt the beginning of next week. I plan to review the features I want to include in my code, which we learned from previous labs. Sadly I don't have a video yet to show the capabilitites of my project, but I hope to have one soon. By the end of thanksgiving break I hope to have all the circuitry and assembling done with my project and focus solely on the coding itself. 
+
 Week 10
 ---
 ```
