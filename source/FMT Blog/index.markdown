@@ -11,20 +11,35 @@ Data Sonification
 ---
 
 1) Title sequence
+
 2) Flash “What is data sonification?” across screen
+
 3) Open with asking people (sitting down) what they think data sonification is (15-30 sec) (Jeopardy music in background)
+
 4) Cue upbeat background music and graphics
+
 5) Go into short (extremely scientific) explanation (intro)
+
 6) Show people’s confused reactions
+
 7) Explain how data sonfication works (explain like I’m 5, with slower and easier music)
+
 8) Again, a fair amount of graphics / background music
+
 9) Explain what data display is
+
 10) Show examples through grapics and facts
+
 11) Explain what data sonification is used for
+
 12) Show examples through graphics
+
 13) Close with people’s reactions of hearing the information / explaining it in their own words
+
 14) Conclusion with participants being enlightened
+
 15) Outro music
+
 
 Make graphics / sound affects as randomly funny as possible, formatted like a Buzzfeed video, but informative and easy to understand
 
