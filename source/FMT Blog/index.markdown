@@ -7,6 +7,78 @@ sharing: true
 footer: true
 ---
 
+Final Project Script
+
+Data Sonification
+---
+0:00
+
+*Cue background music, continue through whole video (except jeopardy music part)*
+
+*Present Title “What is Data Sonification?”*
+
+0:05
+
+*Insert graphics and sound effects for answers as needed, jeopardy music*
+
+Stranger1: (try to come up with an answer)
+
+Stranger2: (try to come up with an answer)
+
+Stranger3: (try to come up with an answer)
+
+0:25
+
+(INTRO): Data Sonification is the process of converting raw data to auditory data so as to properly and efficiently analyze data in a way that is easier for the human brain to perceive and comprehend. Using data display, data can be more easily analyzed to reveal patterns or signal phenomena rather than viewing raw visual data.
+
+0:45
+
+*Show Strangers’ reactions*
+
+0:55
+
+*Present title “How exactly does data sonification work?”*
+
+1:00
+
+*Insert graphics and sound effects as needed*
+
+Emre (voice-over):
+
+1:30
+
+*Present title “So what is data display?” with graphics and sound effects*
+
+1:35
+
+Liam (voice-over): Data Display is defined as an output device for computer data that presents the information in a form suitable for visual perception and decision-making by a person. It is the all-encompassing term that covers data sonification, which is a subcategory of data display that uses non-speech audio to express information and data. Simply put, data display is a way for computer information to be presented in a way that is visually or aurally appealing to people. Auditory Data Display essentially uses everything we know about sound and how it affects the body, and uses it to describe and explain the contents of data.
+
+For example: A prime example of auditory data display would be matching the price of a certain type of stock with a frequency on a synthesizer. Every time the stock hits that price, a certain frequency would played, alerting the stockbroker. 
+
+2:05
+
+*Present title “What is data sonification used for?”*
+
+2:10
+
+Lauren (voice-over): We actually experience data sonification every day, but we don’t even realize it. Metal detectors use sonification to signal the levels of metal in the ground through a beeping sound. And when a church bell or school bell rings to indicate a certain time or school period, that’s data sonification because we interpret the time by hearing the bell without the need to actually look at a clock. These are examples of Iconic Sonification. The other two types of data sonification are Data Conversion Sonification (mapping data to sounds to notice data) and Musical (using sonified data to create music). These types of sonification are used to indicate weather changes with a siren, allow a doctor to notice dangerous brain activity through Data Conversion Sonification of an MRI scan, alert members of NASA of incoming meteoroids, or even allow blind people to locate themselves by sound-cues given from their hearing-aid’s satellite location. Data sonification has become more and more prevalent in issues involving medical/analytical science and those who are visually impaired.
+
+2:40
+
+*Present Strangers understanding / explaining Data Sonification in their own words, AKA conclusion*
+
+Stranger1: (answer)
+
+Stranger2: (answer)
+
+Stranger3: (answer)
+
+3:10
+
+*Cue outro music/graphics*
+
+
+
 What Is Data Display
 ---
 
