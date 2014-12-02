@@ -20,4 +20,4 @@ Soon after, I began to experiment with combining different tracks to create mash
 
 After coming to grips with creating compilations of other people's work, I started working on original tracks. Using the same software I had used to create my mashups, Reaper by Cockos, I began to experiment with writing and producing my own work. To help me with this I purchased a MIDI Keyboard, this enables me to write melodies with chords, as well as record live keyboard playing.
 
-Many of the mashups and original tracks can be found on my <a href=https://soundcloud.com/iamsycko ">Soundcloud.</a>
+Many of the mashups and original tracks can be found on my <a href=https://soundcloud.com/sycko-1 ">Soundcloud.</a>
