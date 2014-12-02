@@ -7,9 +7,7 @@ sharing: true
 footer: true
 ---
 
-Final Project Script
-
-Data Sonification
+Final Project Script: Data Sonification
 ---
 0:00
 
