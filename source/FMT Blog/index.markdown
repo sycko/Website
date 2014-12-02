@@ -7,6 +7,16 @@ sharing: true
 footer: true
 ---
 
+What Is Data Display
+---
+
+Data Display is defined as an output device for computer data that presents the information in a form suitable for visual perception and decision-making by a person. It is the all-encompassing term that covers data sonification, which is a subcategory of data display that uses non-speech audio to express information and data. In layman’s terms, data display is a way for computer information to be presented in a way that is visually or aurally appealing to people. 
+
+
+Auditory data display is a field connecting auditory perception research, sound engineering, data mining, and human-computer interaction in order to make semantic contents of data perceptually available in the form of audible sound. It essentially uses everything we know about sound and how it affects the body, and uses it to describe and explain the contents of data. A prime example of auditory data display would be matching the price of a certain type of stock with a frequency on a synthesizer. Every time the stock hit that price, a certain frequency would played, alerting the stockbroker.
+
+
+
 Data Sonification
 ---
 
