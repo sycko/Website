@@ -7,6 +7,11 @@ sharing: true
 footer: true
 ---
 
+Data Sonification Video
+---
+<a href=https://www.youtube.com/watch?v=TvqX9-hx39U&feature=youtu.be >Here</a> is the final video to the Data Sonfication Video. Enjoy!
+
+
 Final Project Script: Data Sonification
 ---
 0:00
