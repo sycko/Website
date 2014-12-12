@@ -7,6 +7,115 @@ sharing: true
 footer: true
 ---
 
+Final Project Report
+---
+For my final project I created a MIDI contorller. Simply put this device has 16 buttons that send different MIDI notes to any electronic instrument that reads MIDI. I mainly plan on using it with my Digital Audio Workstation as a makeshift MIDI keyboard, making it easier to play melodies and record certian patterns. In addition to sending MIDI notes, it also has 4 potentiometers that can be mapped to various effects. I currently have the potentiometers set to a vinyl hiss, reverb, delay, and filter.
+
+In terms of the code itself, it is fairly straightforward. I needed to include a new library to make sure everything works. This is due to the fact that I am using a new piece of equipment called an Adafruit Trellis. This is an open source backlight keypad driver that can easily be used by many different devices. In addition to the Trellis, I also have 4 potentiometers that can be programmed to control different effects. At the moment the effects I am using are a filter, a delay, some reverb, and vinyl noise. In the loop of the code I have the teensy constantly checking to see if a button has been pressed. If a button is pressed, its LED will light up and it will send a MIDI note to the Digital Audio Workstation (DAW) at full velocity. If a button is not pressed the LED will not be on, and send a signal to the DAW at a velocity of 0.
+
+Each of the potentiometers is set to a certain channel and analog pin. Thus allowing each effect to be have seperate controls and values.
+
+Below is my code, commented for better understanding:
+
+```
+#include <Wire.h> //include the library called Wire.h
+#include <Adafruit_Trellis.h> //include the library called Adafruit_Trellis.h
+
+#define LED     13 //define LED as a constant interval at 13
+
+Adafruit_Trellis trellis; //create an instance of Adafruit_Trellis and call it trellis
+
+const int CHANNEL = 1; //the interval CHANNEL will always equal 1
+
+unsigned long prevReadTime = 0L; //create an unsigned long called prevReadTime
+int autoFilter = 0; //create an interval called autoFilter
+int reverb = 0; //create an interval called reverb
+int delayPot = 0; //create an interval called delayPot
+int vinyl = 0; //create an interval called vinyl
+
+int autoFilterChannel = 1; //create an interval called autoFilterChannel at channel 1
+int reverbChannel = 2; //create an interval called reverbChannel at channel 2
+int delayPotChannel = 3; //create an interval called delayPotChannel at channel 3
+int vinylChannel = 4; //create an interval called vinylChannel at channel 4
+
+int autoFilterChangeVal = 0; //create an interval called autoFilterChangeVal
+int reverbChangeVal = 0; //create an interval called reverbChangeVal
+int delayPotChangeVal = 0; //create an interval called delayPotChangeVal
+int vinylChangeVal = 0; //create an interval called called vinylChangeVal
+
+int lastautoFilterChangeVal = 0; //create an interval called lastautoFilterChangeVal
+int lastreverbChangeVal = 0; //create an interval called lastreverbChangeVal
+int lastdelayPotChangeVal = 0; //create an interval called lastdelayPotChangeVal
+int lastvinylChangeVal = 0; //create an interval called lastvinylChangeVal
+
+int note[] = {
+  60, 61, 62, 63,
+  56, 57, 58, 59,
+  52, 53, 54, 55,
+  48, 49, 50, 51
+}; //assigns the midi notes that will be played by the keypad
+
+void setup() {
+  pinMode(LED, OUTPUT); // LED is set to output
+  trellis.begin(0x70); //begin using the trellis
+  trellis.clear(); //clear the trellis
+  trellis.writeDisplay(); //write to and display the trellis
+ 
+ 
+}
+
+void loop() {
+  unsigned long t = millis(); //create an unsigned long called 't' and set it equal to millis
+  if((t - prevReadTime) >= 20L) { //if t minus the prevReadTime is less than or equal to 20L (20 milliseconds)
+    if(trellis.readSwitches()) { //look at the trellis readSwitches
+      
+      for(int i=0; i<16; i++) { //for every interval called 'i' where 'i' is less than 16, add 1
+        if(trellis.justPressed(i)) { //if 'i' has just been pressed on trellis
+          usbMIDI.sendNoteOn(note[i], 127, CHANNEL); //send the midi value of 'i' at a velocity of 127 to CHANNEL
+         
+          trellis.setLED(i); //turn on trellis LED at 'i'
+        } else if(trellis.justReleased(i)) { //if the trellis button has just been released
+          usbMIDI.sendNoteOff(note[i], 0, CHANNEL); //send the midi value of 'i' at a velocity of 0 to CHANNEL
+          trellis.clrLED(i); //clear the trellis LED at 'i'
+        }
+      }
+      trellis.writeDisplay(); //write to and display the trellis
+    }
+    lastvinylChangeVal = vinylChangeVal; //set lastvinylChangeVal equal to vinylChangeVal
+    vinyl = analogRead(0); //vinyl's values are taken from analog out 0 (potentiometer 1)
+    vinylChangeVal = vinyl/8; //vinylChangeVal is set to vinyl divided by 8
+    if(vinylChangeVal != lastvinylChangeVal) { //i vinylChangeVal does not equal lastvinylChangeVal
+      usbMIDI.sendControlChange(15, vinylChangeVal, vinylChannel); //send a control change at control 15 at a value equal to vinylChangeVal at the vinylChannel
+    }    
+    lastdelayPotChangeVal = delayPotChangeVal; //set lastdelayPotChangeVal equal to delayPotChangeVal
+    delayPot = analogRead(1); //delayPot's values are taken from analog out 1 (potentiometer 2)
+    delayPotChangeVal = delayPot/8; //delayPotChangeVal is set to delayPot divided by 8
+    if(delayPotChangeVal != lastdelayPotChangeVal) { //if delayPotChangeVal does not equal lastdelayPotChangeVal
+      usbMIDI.sendControlChange(14, delayPotChangeVal, delayPotChannel); //send a control change at control 14 at a value equal to delayPotChangeVal at the delayPotChannel
+    }
+    lastreverbChangeVal = reverbChangeVal; //set lastreverbChangeVal equal to reverbChangeVal
+    reverb = analogRead(2); //reverb's values are taken from analog out 2 (potentiometer 3)
+    reverbChangeVal = reverb/8; //reverbChangeVal is set to reverb divided by 8
+    if(reverbChangeVal != lastreverbChangeVal) { //if reverbChangeCal does not equal lastreverbChangeVal
+      usbMIDI.sendControlChange(13, reverbChangeVal, reverbChannel); //send a control change at control 13 at a value equal to reverbChangeVal at the reverbChannel
+    }
+    lastautoFilterChangeVal = autoFilterChangeVal; //set lastautoFilterChangeVal equal to autoFilterChangeVal
+    autoFilter = analogRead(3); //autoFilter's values are taken from analog out 3 (potentiometer 4)
+    autoFilterChangeVal = autoFilter/8; //autoFilterChangeVal is set to autoFilter divided by 8
+    if(autoFilterChangeVal != lastautoFilterChangeVal) { //if autoFilterChangeVal does not equal lastautoFilterChangeVal
+      usbMIDI.sendControlChange(12, autoFilterChangeVal, autoFilterChannel); //send a control change at control 12 at a value equal to autoFilterChangeVal at the autoFilterChannel
+    }
+    
+    
+    prevReadTime = t; //prevReadTime is set to 1
+    
+  }
+  while(usbMIDI.read()); //so long as it is reading MIDI, the loop will continue
+}
+```
+
+<a href=https://www.youtube.com/watch?v=RYuDbqb9Dz8 >Here</a> is a video of my project in action!
+
 Week 11
 ---
 I am currently waiting on certain parts for my final project to be delivered. I hope to have all the parts necessary byt the beginning of next week. I plan to review the features I want to include in my code, which we learned from previous labs. Sadly I don't have a video yet to show the capabilitites of my project, but I hope to have one soon. By the end of thanksgiving break I hope to have all the circuitry and assembling done with my project and focus solely on the coding itself. 
