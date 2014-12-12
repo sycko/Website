@@ -66,6 +66,208 @@
 <hr class="divider">
 
 
+<h2>Final Project Report</h2>
+
+<p>For my final project I created a MIDI contorller. Simply put this device has 16 buttons that send different MIDI notes to any electronic instrument that reads MIDI. I mainly plan on using it with my Digital Audio Workstation as a makeshift MIDI keyboard, making it easier to play melodies and record certian patterns. In addition to sending MIDI notes, it also has 4 potentiometers that can be mapped to various effects. I currently have the potentiometers set to a vinyl hiss, reverb, delay, and filter.</p>
+
+<p>In terms of the code itself, it is fairly straightforward. I needed to include a new library to make sure everything works. This is due to the fact that I am using a new piece of equipment called an Adafruit Trellis. This is an open source backlight keypad driver that can easily be used by many different devices. In addition to the Trellis, I also have 4 potentiometers that can be programmed to control different effects. At the moment the effects I am using are a filter, a delay, some reverb, and vinyl noise. In the loop of the code I have the teensy constantly checking to see if a button has been pressed. If a button is pressed, its LED will light up and it will send a MIDI note to the Digital Audio Workstation (DAW) at full velocity. If a button is not pressed the LED will not be on, and send a signal to the DAW at a velocity of 0.</p>
+
+<p>Each of the potentiometers is set to a certain channel and analog pin. Thus allowing each effect to be have seperate controls and values.</p>
+
+<p>Below is my code, commented for better understanding:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#include &lt;Wire.h&gt; //include the library called Wire.h
+</span><span class='line'>#include &lt;Adafruit_Trellis.h&gt; //include the library called Adafruit_Trellis.h
+</span><span class='line'>
+</span><span class='line'>#define LED     13 //define LED as a constant interval at 13
+</span><span class='line'>
+</span><span class='line'>Adafruit_Trellis trellis; //create an instance of Adafruit_Trellis and call it trellis
+</span><span class='line'>
+</span><span class='line'>const int CHANNEL = 1; //the interval CHANNEL will always equal 1
+</span><span class='line'>
+</span><span class='line'>unsigned long prevReadTime = 0L; //create an unsigned long called prevReadTime
+</span><span class='line'>int autoFilter = 0; //create an interval called autoFilter
+</span><span class='line'>int reverb = 0; //create an interval called reverb
+</span><span class='line'>int delayPot = 0; //create an interval called delayPot
+</span><span class='line'>int vinyl = 0; //create an interval called vinyl
+</span><span class='line'>
+</span><span class='line'>int autoFilterChannel = 1; //create an interval called autoFilterChannel at channel 1
+</span><span class='line'>int reverbChannel = 2; //create an interval called reverbChannel at channel 2
+</span><span class='line'>int delayPotChannel = 3; //create an interval called delayPotChannel at channel 3
+</span><span class='line'>int vinylChannel = 4; //create an interval called vinylChannel at channel 4
+</span><span class='line'>
+</span><span class='line'>int autoFilterChangeVal = 0; //create an interval called autoFilterChangeVal
+</span><span class='line'>int reverbChangeVal = 0; //create an interval called reverbChangeVal
+</span><span class='line'>int delayPotChangeVal = 0; //create an interval called delayPotChangeVal
+</span><span class='line'>int vinylChangeVal = 0; //create an interval called called vinylChangeVal
+</span><span class='line'>
+</span><span class='line'>int lastautoFilterChangeVal = 0; //create an interval called lastautoFilterChangeVal
+</span><span class='line'>int lastreverbChangeVal = 0; //create an interval called lastreverbChangeVal
+</span><span class='line'>int lastdelayPotChangeVal = 0; //create an interval called lastdelayPotChangeVal
+</span><span class='line'>int lastvinylChangeVal = 0; //create an interval called lastvinylChangeVal
+</span><span class='line'>
+</span><span class='line'>int note[] = {
+</span><span class='line'>  60, 61, 62, 63,
+</span><span class='line'>  56, 57, 58, 59,
+</span><span class='line'>  52, 53, 54, 55,
+</span><span class='line'>  48, 49, 50, 51
+</span><span class='line'>}; //assigns the midi notes that will be played by the keypad
+</span><span class='line'>
+</span><span class='line'>void setup() {
+</span><span class='line'>  pinMode(LED, OUTPUT); // LED is set to output
+</span><span class='line'>  trellis.begin(0x70); //begin using the trellis
+</span><span class='line'>  trellis.clear(); //clear the trellis
+</span><span class='line'>  trellis.writeDisplay(); //write to and display the trellis
+</span><span class='line'> 
+</span><span class='line'> 
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>void loop() {
+</span><span class='line'>  unsigned long t = millis(); //create an unsigned long called 't' and set it equal to millis
+</span><span class='line'>  if((t - prevReadTime) &gt;= 20L) { //if t minus the prevReadTime is less than or equal to 20L (20 milliseconds)
+</span><span class='line'>    if(trellis.readSwitches()) { //look at the trellis readSwitches
+</span><span class='line'>      
+</span><span class='line'>      for(int i=0; i&lt;16; i++) { //for every interval called 'i' where 'i' is less than 16, add 1
+</span><span class='line'>        if(trellis.justPressed(i)) { //if 'i' has just been pressed on trellis
+</span><span class='line'>          usbMIDI.sendNoteOn(note[i], 127, CHANNEL); //send the midi value of 'i' at a velocity of 127 to CHANNEL
+</span><span class='line'>         
+</span><span class='line'>          trellis.setLED(i); //turn on trellis LED at 'i'
+</span><span class='line'>        } else if(trellis.justReleased(i)) { //if the trellis button has just been released
+</span><span class='line'>          usbMIDI.sendNoteOff(note[i], 0, CHANNEL); //send the midi value of 'i' at a velocity of 0 to CHANNEL
+</span><span class='line'>          trellis.clrLED(i); //clear the trellis LED at 'i'
+</span><span class='line'>        }
+</span><span class='line'>      }
+</span><span class='line'>      trellis.writeDisplay(); //write to and display the trellis
+</span><span class='line'>    }
+</span><span class='line'>    lastvinylChangeVal = vinylChangeVal; //set lastvinylChangeVal equal to vinylChangeVal
+</span><span class='line'>    vinyl = analogRead(0); //vinyl's values are taken from analog out 0 (potentiometer 1)
+</span><span class='line'>    vinylChangeVal = vinyl/8; //vinylChangeVal is set to vinyl divided by 8
+</span><span class='line'>    if(vinylChangeVal != lastvinylChangeVal) { //i vinylChangeVal does not equal lastvinylChangeVal
+</span><span class='line'>      usbMIDI.sendControlChange(15, vinylChangeVal, vinylChannel); //send a control change at control 15 at a value equal to vinylChangeVal at the vinylChannel
+</span><span class='line'>    }    
+</span><span class='line'>    lastdelayPotChangeVal = delayPotChangeVal; //set lastdelayPotChangeVal equal to delayPotChangeVal
+</span><span class='line'>    delayPot = analogRead(1); //delayPot's values are taken from analog out 1 (potentiometer 2)
+</span><span class='line'>    delayPotChangeVal = delayPot/8; //delayPotChangeVal is set to delayPot divided by 8
+</span><span class='line'>    if(delayPotChangeVal != lastdelayPotChangeVal) { //if delayPotChangeVal does not equal lastdelayPotChangeVal
+</span><span class='line'>      usbMIDI.sendControlChange(14, delayPotChangeVal, delayPotChannel); //send a control change at control 14 at a value equal to delayPotChangeVal at the delayPotChannel
+</span><span class='line'>    }
+</span><span class='line'>    lastreverbChangeVal = reverbChangeVal; //set lastreverbChangeVal equal to reverbChangeVal
+</span><span class='line'>    reverb = analogRead(2); //reverb's values are taken from analog out 2 (potentiometer 3)
+</span><span class='line'>    reverbChangeVal = reverb/8; //reverbChangeVal is set to reverb divided by 8
+</span><span class='line'>    if(reverbChangeVal != lastreverbChangeVal) { //if reverbChangeCal does not equal lastreverbChangeVal
+</span><span class='line'>      usbMIDI.sendControlChange(13, reverbChangeVal, reverbChannel); //send a control change at control 13 at a value equal to reverbChangeVal at the reverbChannel
+</span><span class='line'>    }
+</span><span class='line'>    lastautoFilterChangeVal = autoFilterChangeVal; //set lastautoFilterChangeVal equal to autoFilterChangeVal
+</span><span class='line'>    autoFilter = analogRead(3); //autoFilter's values are taken from analog out 3 (potentiometer 4)
+</span><span class='line'>    autoFilterChangeVal = autoFilter/8; //autoFilterChangeVal is set to autoFilter divided by 8
+</span><span class='line'>    if(autoFilterChangeVal != lastautoFilterChangeVal) { //if autoFilterChangeVal does not equal lastautoFilterChangeVal
+</span><span class='line'>      usbMIDI.sendControlChange(12, autoFilterChangeVal, autoFilterChannel); //send a control change at control 12 at a value equal to autoFilterChangeVal at the autoFilterChannel
+</span><span class='line'>    }
+</span><span class='line'>    
+</span><span class='line'>    
+</span><span class='line'>    prevReadTime = t; //prevReadTime is set to 1
+</span><span class='line'>    
+</span><span class='line'>  }
+</span><span class='line'>  while(usbMIDI.read()); //so long as it is reading MIDI, the loop will continue
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href=https://www.youtube.com/watch?v=RYuDbqb9Dz8 >Here</a> is a video of my project in action!</p>
+
 <h2>Week 11</h2>
 
 <p>I am currently waiting on certain parts for my final project to be delivered. I hope to have all the parts necessary byt the beginning of next week. I plan to review the features I want to include in my code, which we learned from previous labs. Sadly I don&rsquo;t have a video yet to show the capabilitites of my project, but I hope to have one soon. By the end of thanksgiving break I hope to have all the circuitry and assembling done with my project and focus solely on the coding itself.</p>

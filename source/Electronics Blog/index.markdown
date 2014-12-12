@@ -114,7 +114,7 @@ void loop() {
 }
 ```
 
-<a href=https://www.youtube.com/watch?v=RYuDbqb9Dz8 >Here</a> is a video of my project in action!
+<a href=https://www.youtube.com/watch?v=RYuDbqb9Dz8 >Here</a> is a video of my project in action! (The hissing noise you hear during part of the video is intentional, it is one of the effects, the vinyl hiss.)
 
 Week 11
 ---
