@@ -7,7 +7,21 @@ sharing: true
 footer: true
 ---
 
-Final Project Report
+Analog Lab 1
+---
+For this lab we were creating a circuit where two LEDs were controlled by a switch and potentiometer. <a href=https://www.youtube.com/watch?v=Bm4_MvlVYoM >Here</a> is the video of my circuit working, and <a href=https://www.circuitlab.com/circuit/3uzj6m/cicuit-1-for-electronics-lab/ >here</a> is the circuit diagram.
+
+In addition to circuit construction we also looked into how multimeters work. These tools are essential to troubleshooting circuits. They allow us to see if each connection in a circuit is getting voltage or not, as well as the amount of voltage they are getting. In addition to voltage, many multimeters can also read current and resistance.
+
+We also researched some of the past final projects that students before us have done. Some of my favorites were <a href=https://sarahbeilenson.wordpress.com/2014/05/09/final-report-tremolo-effect-pedal/ >this</a> tremolo effect pedal which gives a steady variation in amplitude to a guitar that was being played. There are two potentiometers on the device that changed the speed and depth of the tremolo. <a href=http://kenzoperronelectronicslab.blogspot.com/2014/05/final-project-report_8.html >This</a> piezoelectric audio trigger which allows the user to trigger bits of sound from either a square-wave oscillator or an audio input. If you tap or press the piezoelectric disk taped to the breadboard, the circuit will let out the oscillator the audio input. The final project that peaked my interest was <a href=https://matthewlauelectronicslab.wordpress.com/2014/05/08/final-lab-report/ >this</a> triangle wave synthesizer. This was a simple triangle wave synthesizer with two voices, a built in tremolo effect, and an active low-pass filter.
+
+Analog Troubleshooting List
+---
+Here is where I will post all the troubleshooting I do in Analog Circuitry. Each lab that has troubleshooting will have it's own subtitle.
+
+
+
+Final Digital Project Report
 ---
 For my final project I created a MIDI contorller. Simply put this device has 16 buttons that send different MIDI notes to any electronic instrument that reads MIDI. I mainly plan on using it with my Digital Audio Workstation as a makeshift MIDI keyboard, making it easier to play melodies and record certian patterns. In addition to sending MIDI notes, it also has 4 potentiometers that can be mapped to various effects. I currently have the potentiometers set to a vinyl hiss, reverb, delay, and filter.
 
