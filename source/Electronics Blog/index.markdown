@@ -130,11 +130,11 @@ void loop() {
 
 <a href=https://www.youtube.com/watch?v=RYuDbqb9Dz8 >Here</a> is a video of my project in action! (The hissing noise you hear during part of the video is intentional, it is one of the effects, the vinyl hiss.)
 
-Week 11
+Digital Week 11
 ---
 I am currently waiting on certain parts for my final project to be delivered. I hope to have all the parts necessary byt the beginning of next week. I plan to review the features I want to include in my code, which we learned from previous labs. Sadly I don't have a video yet to show the capabilitites of my project, but I hope to have one soon. By the end of thanksgiving break I hope to have all the circuitry and assembling done with my project and focus solely on the coding itself. 
 
-Week 10
+Digital Week 10
 ---
 ```
 int oscillatorPin = 8;
@@ -173,7 +173,7 @@ void playFrequency(int freq) {
 
 In regards to my final project, I am planning on making a button MIDI controller. Allowing me to use it as a makshift keyboard, or any other MIDI instrument. For this project I will need a couple of items that I don't already have. Including a 4x4 Adafruit Trellis Monochrome Driver, a silicone elastomer 4x4 button keypad. I will also need 4 10k potentiometers, LEDs, cutters, and jumper wires. I look forward to completing this project and using it in the future.
 
-Week 9
+Digital Week 9
 ---
 ```
 IntervalTimer oscTimer;
@@ -310,7 +310,7 @@ If I wanted to make a more advanced sequencer I could have it controlled by my D
 It would be nice to know how to change the sound of each note (square, sine, sawtooth), in addition it would be cool to know how to change the sound of each note with a potometer, or being able to gradually change the harshness of the sound.
 
 
-Week 8
+Digital Week 8
 ---
 ```
 #include <SPI.h>
@@ -429,7 +429,7 @@ void digitalPotWrite(int ssPin, int val) {
 }
 ```
 
-Week 7
+Digital Week 7
 ---
 ```
 
@@ -514,7 +514,7 @@ void playNote() {
 
 ```
 
-Week 6
+Digital Week 6
 ---
 
 MIDI Out Final Part
@@ -609,7 +609,7 @@ int getFreqFromMidiNote(int theNote) {
 }
 ```
 
-Week 5
+Digital Week 5
 ---
 
 Part 1a
@@ -893,7 +893,7 @@ void playFrequency(int freq) {
 }
 
 ```
-Week 4
+Digital Week 4
 ---
 
 In this lab we used our first Lab's code as an oscillator. This made a very basic monophonic squarewave synth that can hit different notes. My breadboard could only fit five buttons and therefore could only play 5 programmable notes. 
@@ -963,7 +963,7 @@ void playFrequency(int freq) {
 }
 ```
 
-Week 3
+Digital Week 3
 ---
 Part 1
 
@@ -1049,7 +1049,7 @@ void loop() {
 }
 ```
 
-Week 2
+Digital Week 2
 ---
 Question 2b
 
@@ -1118,7 +1118,7 @@ void loop() { //sends no information back to the loop
 }
 ```
 
-Week 1
+Digital Week 1
 ---
 
 <a href=http://www.instructables.com/id/Arcade-Button-MIDI-Controller/?ALLSTEPS >These</a> are instructions for a MIDI controller built using an Arduino microcontroller.  This controller can send and receive MIDI messages to your PC, and allows you to control your software program such as Traktor. The white arcade buttons you see in the picture are the inputs and each button is mapped to a different sound/signal. When a button is pressed, it sends a signal to the software which is then sent to the listener.
