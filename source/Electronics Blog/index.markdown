@@ -7,6 +7,14 @@ sharing: true
 footer: true
 ---
 
+Analog Lab 2
+---
+<a href=https://www.circuitlab.com/circuit/rj4s49/analog-electronics-lab-2-w-switch/ >This</a> is the schematic for my audio circuit with a switch.
+
+<a href=https://www.circuitlab.com/circuit/5jcqc8/analog-electronics-lab-2-w-volume-knob/ >This</a> is the schematic for my audio circuit with a potentiometer set to volume.
+
+<a href=https://www.circuitlab.com/circuit/8gyman/analog-electronics-lab-2-w-potentiometer/ >This</a> is the schematic for my audio circuit with a potentiometer set to pan between left and right.
+
 Analog Lab 1
 ---
 For this lab we were creating a circuit where two LEDs were controlled by a switch and potentiometer. <a href=https://www.youtube.com/watch?v=Bm4_MvlVYoM >Here</a> is the video of my circuit working, and <a href=https://www.circuitlab.com/circuit/3uzj6m/cicuit-1-for-electronics-lab/ >here</a> is the circuit diagram.
