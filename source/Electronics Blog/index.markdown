@@ -6,6 +6,16 @@ comments: true
 sharing: true
 footer: true
 ---
+Analog Lab 3
+---
+
+<a href=https://www.circuitlab.com/circuit/89u55b/highpass-and-lowpass-filter/ >Here</a> is my schematic for a highpass and lowpass filter run through a switch.
+
+For my final project I could do a more complex lowpasss filter for an instrument. It could be plugged into a guitar or similar instrument and controlled by either a potentiometer or a pedal.
+
+In terms of more complex projects, I could create my own analog synthesizer. Possibly a keyboard set up of buttons, each button being pressed creates a different pitches square wave (or any particular waveform).
+
+When looking at modern analog synthesizers I would really like to know how a stylophone works. It is a pocket synthesizer that has a unique way of operating, by reading a stylus. I would love to take one apart, but I'm not sure I would be able to put it back together again!
 
 Analog Lab 2
 ---
