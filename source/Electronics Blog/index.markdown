@@ -6,8 +6,28 @@ comments: true
 sharing: true
 footer: true
 ---
+Analog Lab 4
+---
+
+For this lab we gathered the basic knowledge needed to read and use an oscilloscope. Below is a picture of how I setup my oscilloscope.
+
+{% img http://i.imgur.com/Y7h8PGY.jpg %}
+
+I used the Vert Mode switch to position the ground of each channel. The ground was moved using the position knobs above each volt/div knob. The volt/div appears to zoom in and out on the waveform, I determined that .2 was the best setting to get an overall idea of what the waveform looked like, and what it was doing.
+
+In addition I had to set the volume on my computer. As the volume got louder the peaks of the waveform got higher as well. I found that mid volume worked best, it gave me peaks about where the picture above shows the peaks at.
+
+Next we connected a resistor and capacitor (in that order). This created a highpass filter. As I jumped up an octave the RC cut the peak in half and wavelength. When I reversed the capacitor and resistor, it created a lowpass filter. As I jumped an octave the RC circuit the wavelength was halved.
+
+Below is a picture of my planned final project design. I am planning on making a basic synthesizer. Each button will be connected to a specific resistor than, when pressed, will create a specific frequency. Each of the pots will control some sort of effect, I was thinking of maybe using an LFO and a filter, but that is subject to change
+
+{% img http://i.imgur.com/RqgWvKC.jpg %}
+
 Analog Lab 3
 ---
+
+<a href=https://www.circuitlab.com/circuit/2v4nvn/lab-3-revisited// >Here</a> is the revisited schematic for lab 3. I had the wrong values for both my potentiometers and capcitors.
+
 
 <a href=https://www.circuitlab.com/circuit/89u55b/highpass-and-lowpass-filter/ >Here</a> is my schematic for a highpass and lowpass filter run through a switch.
 
