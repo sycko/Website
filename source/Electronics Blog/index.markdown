@@ -6,6 +6,29 @@ comments: true
 sharing: true
 footer: true
 ---
+Analog Lab 5
+---
+For this lab I built a non-inverting OP Amp.
+
+My calculations for the resistor are as follows:
+    2 = (1+R/1000)
+    1 = R/1000
+    1000 = R
+
+Below is a picture of the oscilloscope showing my OP Amp.
+
+{% img http://i.imgur.com/4ETeuBv.jpg %}
+
+
+
+My calculations for the potentiometer are as follows:
+    11 = 1 + R/1000
+    10 = R/1000
+    100000 = R
+
+<a href=https://www.youtube.com/watch?v=9XVxOeRa64M >Here</a> is a video of my OP Amp working with a potentiometer.
+
+
 Analog Lab 4
 ---
 
