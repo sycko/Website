@@ -6,6 +6,15 @@ comments: true
 sharing: true
 footer: true
 ---
+
+Analog Lab 6
+---
+For this lab we made basic oscillators using OP Amps. 
+
+<a href=https://www.circuitlab.com/circuit/fk2vuh/op-amps-ii-oscillators/ >Here</a> is the schematic for my OP Amp operating with two switches allowing the square wave and triangle wave to be played at selected times.
+
+<a href=https://www.youtube.com/watch?v=Maf37Zd-jiY >Here</a> is a video of the oscillators working, both a square wave, and a triagle wave.
+
 Analog Lab 5
 ---
 For this lab I built a non-inverting OP Amp.
