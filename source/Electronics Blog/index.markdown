@@ -6,6 +6,27 @@ comments: true
 sharing: true
 footer: true
 ---
+Analog Lab 7
+---
+
+For this lab we were using sensors. I tried reading the resistance of my sensor with a VU meter and read it as 10 kOhms to 400 kOhms, but when I read the resistance when the sensor was int he circuit it read 10 Ohms to 100 kOhms.
+
+<a href=https://www.youtube.com/watch?v=XCQpfnpX3ak >Here</a> is a video of my circuit working.
+
+My final project is going to be a "pocket" synthesizer that plays 12 different notes. There will be 12 resistors that are attached to 12 different metal, or tinned, plates. There will also be a stylus attaced to the synth so that when the user presses the stylus to any of the 12 tinned plates, a note will be played through the output speaker. I am also planning on having 2 different potentiometers. One that controls the pitch of the notes, allowing different octaves to be played, and the other which will put a tremolo on the notes being played, if the user should want one.
+
+{% img http://i.imgur.com/r3ZhEUK.jpg %}
+
+Tentative Parts List:
+1x Speaker
+1x output jack
+1x pen for stylus
+12x resistors of different values
+2x potentiometers
+Wire
+Solder (tin)
+9V Battery
+Battery Snap
 
 Analog Lab 6
 ---
