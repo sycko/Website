@@ -6,6 +6,19 @@ comments: true
 sharing: true
 footer: true
 ---
+Analog Lab 8
+---
+
+For this lab we were turning sound into light.
+
+We started by building a half-wave precision rectifier. This cicuit cuts the signal in half at the 0, only allowing a positive signal as opposed to a positive and negative signal. It allows very low level signals to be rectified with little error.
+
+Next we made an <a href=https://www.youtube.com/watch?v=CQTgt1I_cuI >envelope follower.</a> This created a level that followed the waveform as we changed the volume of the signal. it allowed us to change the threshold at which the light is being turned on and off.
+
+Finally we built a comparator circuit <a href=https://www.youtube.com/watch?v=Cbn_Oybo9S0 > Here</a> is a video of the circuit in action, the light responds to certain volumes produced by the audio signal.
+
+If I wanted the light to respond to certain frequencies such as a bass drum, or high hat, I would put a lowpass or highpass filter (respectively), that only allowed certain frequencies to affect the LED.
+
 Analog Lab 7
 ---
 
