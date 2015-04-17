@@ -6,6 +6,15 @@ comments: true
 sharing: true
 footer: true
 ---
+
+Analog Lab 9
+---
+Here is the first portion of my final lab. I started out with an oscillator similar to the one we originally made in class. Instead of a potentiometer I ran various resistors in stead to create a consistent note. Although the note being played is a C, it is significantly lower than I expected. I need to re-evaluate my calculations and make sure everything is correct.
+
+Over the next few weeks I plan on adding the remaining 11 notes as well as the contact pad for each note to be played. I also plan on adding a VCA for added effect to the device.
+
+<a https://www.circuitlab.com/circuit/x9sd6f/final-project-part-1/ > Here</a> is the schematic I have thus far, and <a https://www.youtube.com/watch?v=AGE-b2b5wRw > here</a> is a video of my project in action.
+
 Analog Lab 8
 ---
 
