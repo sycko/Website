@@ -6,7 +6,12 @@ comments: true
 sharing: true
 footer: true
 ---
+Analog Lab 10
+---
 
+ <a https://www.circuitlab.com/circuit/86m57f/screenshot/1024x768/ > Here</a> is the schematic for the second part of my final lab. I am now 2/3 of the way to finishing the project. I added a voltage controlled amplifier to the oscillator, so that it now has a tremolo effect. For the remainder of my project I need to add the rest of the notes to the keyboard, as well as the stylus and contact pads. This should be a difficult task as I already have the calculations for my notes.
+
+ <a https://www.youtube.com/watch?v=EFAR073jV4c > Here</a> is a video of my project in action thus far.
 Analog Lab 9
 ---
 Here is the first portion of my final lab. I started out with an oscillator similar to the one we originally made in class. Instead of a potentiometer I ran various resistors in stead to create a consistent note. Although the note being played is a C, it is significantly lower than I expected. I need to re-evaluate my calculations and make sure everything is correct.
