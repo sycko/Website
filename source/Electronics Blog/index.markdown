@@ -6,6 +6,56 @@ comments: true
 sharing: true
 footer: true
 ---
+Analog Final Project
+---
+My project is an interpretation of the stylophone. It is basically an eight key synthesizer triggered by a stylus creating a sound when it comes in contact with a metal plate. Each individual metal plate is set to play a certain note, from C4 up to C5. In other words, it plays an entire octave. There are two different ways in which the notes can be played. The first is as a straight tone. The second has a tremolo that adds a little bit of texture to the sound.
+
+<a href=https://www.youtube.com/watch?v=b3lEFg9Umf8 > Here</a> is a video of my project.
+
+<a href=https://drive.google.com/file/d/0B9QjEv0QrVUkT0NBbkFESmtHUjdpT010UmMydUdWRm44S1Uw/view?usp=sharing > Here</a> is an audio recording of my project.
+
+I began by creating an oscillator. The schematic for an oscillator is as follows: 
+
+{% img https://stevesanalogelectronicslab.files.wordpress.com/2015/03/op-amp-square-and-triangle-wave1.png %}
+
+Each of the triangles in the schematic designate Operational Amplifiers. OP Amps are essentially voltage amplifying devices designed to be used with external feedback components between its output and input terminals. For the external feedback components, I used resistors and capacitors. By using the output frequency formula:
+
+    Output Frequency = (1/(4*Rt*C))*(R2/R1)
+
+I was able to calculate the proper resistance of each of the eight notes needed to create the synthesizer. My calculations are as follows:
+
+    C 261Hz = 1/(4*R*.000001 farads)*(10) = 9578 Ohms
+    D 293Hz = 1/(4*R*.000001 farads)*(10) = 8532 Ohms
+    E 329Hz = 1/(4*R*.000001 farads)*(10) = 7598 Ohms
+    F 343Hz = 1/(4*R*.000001 farads)*(10) = 7288 Ohms
+    G 392Hz = 1/(4*R*.000001 farads)*(10) = 6377 Ohms
+    A 440Hz = 1/(4*R*.000001 farads)*(10) = 5681 Ohms
+    B 493Hz = 1/(4*R*.000001 farads)*(10) = 5070 Ohms
+    C 523Hz = 1/(4*R*.000001 farads)*(10) = 4780 Ohms
+
+
+And this is the portion of the schematic, covering my oscillator:
+
+{% img http://i.imgur.com/Coj6gWT.png %}
+
+The stylus can be seen in the large 8 pin box of this schematic. It essentially completes the connection when it touches any of the 8 metal plates. Once the connection is completed, a signal is sent though a Voltage Controlled Amplifier.
+
+With a VCA, it is possible to take any input or output signal and input it into the VCA, and then use that signal to control the volume of another audio signal. My VCA used an extremely slow version of the original oscillator I posted above:
+
+{% img https://stevesanalogelectronicslab.files.wordpress.com/2015/03/op-amp-square-and-triangle-wave1.png %}
+
+In order to slow the oscillator down I had to increase R1 to 47 kOhms and R2 to 100 kOhms. This this slows the oscillation down to about 5 hz. When the signal is being received, it interacts with the normal speed oscillations and creates a tremolo (or frequency modulation) effect.
+
+There is a switch alternating the VCA from receiving the slowed signal (aka creating a tremolo) and receiving no signal (aka groud or the normal signal from the original oscillator). This allows for two different sounds in the synthesizer. 
+This is the schematic for just the VCA (top) and the Tremolo (bottom):
+
+{% img http://i.imgur.com/klqS0cq.png %}
+
+Both signals are run through the master output of the VCA, which in this case is another OP Amp.
+
+<a href=https://www.circuitlab.com/circuit/4xzx9j/screenshot/1024x768/ > Here</a> is the complete schematic of my project.
+
+
 Analog Lab 10
 ---
 
