@@ -8,7 +8,7 @@ footer: true
 ---
 Analog Final Project
 ---
-My project is an interpretation of the stylophone. It is basically an eight key synthesizer triggered by a stylus creating a sound when it comes in contact with a metal plate. Each individual metal plate is set to play a certain note, from C4 up to C5. In other words, it plays an entire octave. There are two different ways in which the notes can be played. The first is as a straight tone. The second has a tremolo that adds a little bit of texture to the sound.
+My project is an interpretation of the <a href=http://en.wikipedia.org/wiki/Stylophone > stylophone</a>. The project is basically an eight key synthesizer triggered by a stylus creating a sound when it comes in contact with a metal plate. Each individual metal plate is set to play a certain note, from C4 up to C5. In other words, it plays an entire octave. There are two different ways in which the notes can be played. The first is as a straight tone. The second has a tremolo that adds a little bit of texture to the sound.
 
 <a href=https://www.youtube.com/watch?v=b3lEFg9Umf8 > Here</a> is a video of my project.
 
