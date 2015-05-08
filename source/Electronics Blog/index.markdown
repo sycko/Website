@@ -46,7 +46,7 @@ With a VCA, it is possible to take any input or output signal and input it into 
 
 In order to slow the oscillator down I had to increase R1 to 47 kOhms and R2 to 100 kOhms. This this slows the oscillation down to about 5 hz. When the signal is being received, it interacts with the normal speed oscillations and creates a tremolo (or frequency modulation) effect.
 
-There is a switch alternating the VCA from receiving the slowed signal (aka creating a tremolo) and receiving no signal (aka groud or the normal signal from the original oscillator). This allows for two different sounds in the synthesizer. 
+There is a switch alternating the VCA between receiving the slowed signal (aka creating a tremolo) and receiving no signal (aka groud or the normal signal from the original oscillator). This allows for two different sounds in the synthesizer. 
 This is the schematic for just the VCA (top) and the Tremolo (bottom):
 
 {% img http://i.imgur.com/klqS0cq.png %}
