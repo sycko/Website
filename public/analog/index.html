@@ -1,0 +1,341 @@
+<!doctype html>
+  <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+  
+    
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Analog Electronics - Liam Sykes</title>
+    <meta name="author" content="Liam Sykes">
+    
+    <meta name="description" content="Student, Music Producer, DJ">
+    
+    <meta name="viewport" content="width=device-width">
+    <link rel="canonical" href="http://sycko.github.io/analog">
+    
+    <link href="/favicon.png" rel="icon">
+    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet">
+    <link href="/atom.xml" rel="alternate" title="Liam Sykes" type="application/atom+xml">
+  </head>
+
+
+  <body >
+
+    <header>
+      <div class="grid-wrapper">
+  <div class="grid">
+
+    <div class="grid__item two-fifths lap-four-sixths palm-one-whole">
+  <a href="/" class="site-title">Liam Sykes</a>
+</div>
+
+<div class="grid__item three-fifths lap-two-sixths palm-one-whole">
+  <nav>
+    <input type="checkbox" id="toggle">
+<label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu"></label>
+<ul class="menu pull-right">
+  <li><a href="/">Home</a></li>
+  <li><a href="/about/">About</a></li>
+  <li><a href="/projects/">Projects</a></li>
+  <li><a href="/analog/">Analog</a></li>
+  <li><a href="/digital/">Digital</a></li>
+</ul>
+  </nav>
+</div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+    <div class="grid-wrapper">
+      <div class="grid grid-center">
+        
+        <div class="grid__item two-thirds lap-one-whole palm-one-whole">
+        
+
+          
+<h1 class="title indent">
+  Analog Electronics
+</h1>
+<hr class="divider">
+
+
+<h2>Analog Final Project</h2>
+
+<p>My project is an interpretation of the <a href=http://en.wikipedia.org/wiki/Stylophone > stylophone</a>. The project is basically an eight key synthesizer triggered by a stylus creating a sound when it comes in contact with a metal plate. Each individual metal plate is set to play a certain note, from C4 up to C5. In other words, it plays an entire octave. There are two different ways in which the notes can be played. The first is as a straight tone. The second has a tremolo that adds a little bit of texture to the sound.</p>
+
+<p><a href=https://www.youtube.com/watch?v=b3lEFg9Umf8 > Here</a> is a video of my project.</p>
+
+<p><a href=https://drive.google.com/file/d/0B9QjEv0QrVUkT0NBbkFESmtHUjdpT010UmMydUdWRm44S1Uw/view?usp=sharing > Here</a> is an audio recording of my project.</p>
+
+<p>I began by creating an oscillator. The schematic for an oscillator is as follows:</p>
+
+<p><img src="https://stevesanalogelectronicslab.files.wordpress.com/2015/03/op-amp-square-and-triangle-wave1.png"></p>
+
+<p>Each of the triangles in the schematic designate Operational Amplifiers. OP Amps are essentially voltage amplifying devices designed to be used with external feedback components between its output and input terminals. For the external feedback components, I used resistors and capacitors. By using the output frequency formula:</p>
+
+<pre><code>Output Frequency = (1/(4*Rt*C))*(R2/R1)
+</code></pre>
+
+<p>I was able to calculate the proper resistance of each of the eight notes needed to create the synthesizer. My calculations are as follows:</p>
+
+<pre><code>C 261Hz = 1/(4*R*.000001 farads)*(10) = 9578 Ohms
+D 293Hz = 1/(4*R*.000001 farads)*(10) = 8532 Ohms
+E 329Hz = 1/(4*R*.000001 farads)*(10) = 7598 Ohms
+F 343Hz = 1/(4*R*.000001 farads)*(10) = 7288 Ohms
+G 392Hz = 1/(4*R*.000001 farads)*(10) = 6377 Ohms
+A 440Hz = 1/(4*R*.000001 farads)*(10) = 5681 Ohms
+B 493Hz = 1/(4*R*.000001 farads)*(10) = 5070 Ohms
+C 523Hz = 1/(4*R*.000001 farads)*(10) = 4780 Ohms
+</code></pre>
+
+<p>And this is the portion of the schematic, covering my oscillator:</p>
+
+<p><img src="http://i.imgur.com/Coj6gWT.png"></p>
+
+<p>The stylus can be seen in the large 8 pin box of this schematic. It essentially completes the connection when it touches any of the 8 metal plates. Once the connection is completed, a signal is sent though a Voltage Controlled Amplifier.</p>
+
+<p>With a VCA, it is possible to take any input or output signal and input it into the VCA, and then use that signal to control the volume of another audio signal. My VCA used an extremely slow version of the original oscillator I posted above:</p>
+
+<p><img src="https://stevesanalogelectronicslab.files.wordpress.com/2015/03/op-amp-square-and-triangle-wave1.png"></p>
+
+<p>In order to slow the oscillator down I had to increase R1 to 47 kOhms and R2 to 100 kOhms. This this slows the oscillation down to about 5 hz. When the signal is being received, it interacts with the normal speed oscillations and creates a tremolo (or frequency modulation) effect.</p>
+
+<p>There is a switch alternating the VCA between receiving the slowed signal (aka creating a tremolo) and receiving no signal (aka groud or the normal signal from the original oscillator). This allows for two different sounds in the synthesizer.
+This is the schematic for just the VCA (top) and the Tremolo (bottom):</p>
+
+<p><img src="http://i.imgur.com/klqS0cq.png"></p>
+
+<p>Both signals are run through the master output of the VCA, which in this case is another OP Amp.</p>
+
+<p><a href=https://www.circuitlab.com/circuit/4xzx9j/screenshot/1024x768/ > Here</a> is the complete schematic of my project.</p>
+
+<h2>Analog Lab 10</h2>
+
+<p> <a href=https://www.circuitlab.com/circuit/86m57f/screenshot/1024x768/ > Here</a> is the schematic for the second part of my final lab. I am now 2/3 of the way to finishing the project. I added a voltage controlled amplifier to the oscillator, so that it now has a tremolo effect. For the remainder of my project I need to add the rest of the notes to the keyboard, as well as the stylus and contact pads. This should be a difficult task as I already have the calculations for my notes.</p>
+
+<p> <a href=https://www.youtube.com/watch?v=EFAR073jV4c > Here</a> is a video of my project in action thus far.</p>
+
+<h2>Analog Lab 9</h2>
+
+<p>Here is the first portion of my final lab. I started out with an oscillator similar to the one we originally made in class. Instead of a potentiometer I ran various resistors in stead to create a consistent note. Although the note being played is a C, it is significantly lower than I expected. I need to re-evaluate my calculations and make sure everything is correct.</p>
+
+<p>Over the next few weeks I plan on adding the remaining 11 notes as well as the contact pad for each note to be played. I also plan on adding a VCA for added effect to the device.</p>
+
+<p><a href=https://www.circuitlab.com/circuit/x9sd6f/final-project-part-1/ > Here</a> is the schematic I have thus far, and <a href=https://www.youtube.com/watch?v=AGE-b2b5wRw > here</a> is a video of my project in action.</p>
+
+<h2>Analog Lab 8</h2>
+
+<p>For this lab we were turning sound into light.</p>
+
+<p>We started by building a half-wave precision rectifier. This cicuit cuts the signal in half at the 0, only allowing a positive signal as opposed to a positive and negative signal. It allows very low level signals to be rectified with little error.</p>
+
+<p>Next we made an <a href=https://www.youtube.com/watch?v=CQTgt1I_cuI >envelope follower.</a> This created a level that followed the waveform as we changed the volume of the signal. it allowed us to change the threshold at which the light is being turned on and off.</p>
+
+<p>Finally we built a comparator circuit <a href=https://www.youtube.com/watch?v=Cbn_Oybo9S0 > Here</a> is a video of the circuit in action, the light responds to certain volumes produced by the audio signal.</p>
+
+<p>If I wanted the light to respond to certain frequencies such as a bass drum, or high hat, I would put a lowpass or highpass filter (respectively), that only allowed certain frequencies to affect the LED.</p>
+
+<h2>Analog Lab 7</h2>
+
+<p>For this lab we were using sensors. I tried reading the resistance of my sensor with a VU meter and read it as 10 kOhms to 400 kOhms, but when I read the resistance when the sensor was int he circuit it read 10 Ohms to 100 kOhms.</p>
+
+<p><a href=https://www.youtube.com/watch?v=XCQpfnpX3ak >Here</a> is a video of my circuit working.</p>
+
+<p>My final project is going to be a &ldquo;pocket&rdquo; synthesizer that plays 12 different notes. There will be 12 resistors that are attached to 12 different metal, or tinned, plates. There will also be a stylus attaced to the synth so that when the user presses the stylus to any of the 12 tinned plates, a note will be played through the output speaker. I am also planning on having 2 different potentiometers. One that controls the pitch of the notes, allowing different octaves to be played, and the other which will put a tremolo on the notes being played, if the user should want one.</p>
+
+<p><img src="http://i.imgur.com/r3ZhEUK.jpg"></p>
+
+<p>Tentative Parts List:
+1x Speaker
+1x output jack
+1x pen for stylus
+12x resistors of different values
+2x potentiometers
+Wire
+Solder (tin)
+9V Battery
+Battery Snap</p>
+
+<h2>Analog Lab 6</h2>
+
+<p>For this lab we made basic oscillators using OP Amps.</p>
+
+<p><a href=https://www.circuitlab.com/circuit/fk2vuh/op-amps-ii-oscillators/ >Here</a> is the schematic for my OP Amp operating with two switches allowing the square wave and triangle wave to be played at selected times.</p>
+
+<p><a href=https://www.youtube.com/watch?v=Maf37Zd-jiY >Here</a> is a video of the oscillators working, both a square wave, and a triagle wave.</p>
+
+<h2>Analog Lab 5</h2>
+
+<p>For this lab I built a non-inverting OP Amp.</p>
+
+<p>My calculations for the resistor are as follows:</p>
+
+<pre><code>2 = (1+R/1000)
+1 = R/1000
+1000 = R
+</code></pre>
+
+<p>Below is a picture of the oscilloscope showing my OP Amp.</p>
+
+<p><img src="http://i.imgur.com/4ETeuBv.jpg"></p>
+
+<p>My calculations for the potentiometer are as follows:</p>
+
+<pre><code>11 = 1 + R/1000
+10 = R/1000
+100000 = R
+</code></pre>
+
+<p><a href=https://www.youtube.com/watch?v=9XVxOeRa64M >Here</a> is a video of my OP Amp working with a potentiometer.</p>
+
+<h2>Analog Lab 4</h2>
+
+<p>For this lab we gathered the basic knowledge needed to read and use an oscilloscope. Below is a picture of how I setup my oscilloscope.</p>
+
+<p><img src="http://i.imgur.com/Y7h8PGY.jpg"></p>
+
+<p>I used the Vert Mode switch to position the ground of each channel. The ground was moved using the position knobs above each volt/div knob. The volt/div appears to zoom in and out on the waveform, I determined that .2 was the best setting to get an overall idea of what the waveform looked like, and what it was doing.</p>
+
+<p>In addition I had to set the volume on my computer. As the volume got louder the peaks of the waveform got higher as well. I found that mid volume worked best, it gave me peaks about where the picture above shows the peaks at.</p>
+
+<p>Next we connected a resistor and capacitor (in that order). This created a highpass filter. As I jumped up an octave the RC cut the peak in half and wavelength. When I reversed the capacitor and resistor, it created a lowpass filter. As I jumped an octave the RC circuit the wavelength was halved.</p>
+
+<p>Below is a picture of my planned final project design. I am planning on making a basic synthesizer. Each button will be connected to a specific resistor than, when pressed, will create a specific frequency. Each of the pots will control some sort of effect, I was thinking of maybe using an LFO and a filter, but that is subject to change</p>
+
+<p><img src="http://i.imgur.com/RqgWvKC.jpg"></p>
+
+<h2>Analog Lab 3</h2>
+
+<p><a href=https://www.circuitlab.com/circuit/2v4nvn/lab-3-revisited// >Here</a> is the revisited schematic for lab 3. I had the wrong values for both my potentiometers and capcitors.</p>
+
+<p><a href=https://www.circuitlab.com/circuit/89u55b/highpass-and-lowpass-filter/ >Here</a> is my schematic for a highpass and lowpass filter run through a switch.</p>
+
+<p>For my final project I could do a more complex lowpasss filter for an instrument. It could be plugged into a guitar or similar instrument and controlled by either a potentiometer or a pedal.</p>
+
+<p>In terms of more complex projects, I could create my own analog synthesizer. Possibly a keyboard set up of buttons, each button being pressed creates a different pitches square wave (or any particular waveform).</p>
+
+<p>When looking at modern analog synthesizers I would really like to know how a stylophone works. It is a pocket synthesizer that has a unique way of operating, by reading a stylus. I would love to take one apart, but I&rsquo;m not sure I would be able to put it back together again!</p>
+
+<h2>Analog Lab 2</h2>
+
+<p><a href=https://www.circuitlab.com/circuit/rj4s49/analog-electronics-lab-2-w-switch/ >This</a> is the schematic for my audio circuit with a switch.</p>
+
+<p><a href=https://www.circuitlab.com/circuit/5jcqc8/analog-electronics-lab-2-w-volume-knob/ >This</a> is the schematic for my audio circuit with a potentiometer set to volume.</p>
+
+<p><a href=https://www.circuitlab.com/circuit/8gyman/analog-electronics-lab-2-w-potentiometer/ >This</a> is the schematic for my audio circuit with a potentiometer set to pan between left and right.</p>
+
+<h2>Analog Lab 1</h2>
+
+<p>For this lab we were creating a circuit where two LEDs were controlled by a switch and potentiometer. <a href=https://www.youtube.com/watch?v=Bm4_MvlVYoM >Here</a> is the video of my circuit working, and <a href=https://www.circuitlab.com/circuit/3uzj6m/cicuit-1-for-electronics-lab/ >here</a> is the circuit diagram.</p>
+
+<p>In addition to circuit construction we also looked into how multimeters work. These tools are essential to troubleshooting circuits. They allow us to see if each connection in a circuit is getting voltage or not, as well as the amount of voltage they are getting. In addition to voltage, many multimeters can also read current and resistance.</p>
+
+<p>We also researched some of the past final projects that students before us have done. Here are some of my favorites: <a href=https://sarahbeilenson.wordpress.com/2014/05/09/final-report-tremolo-effect-pedal/ >this</a> tremolo effect pedal which gives a steady variation in amplitude to a guitar that was being played. There are two potentiometers on the device that changed the speed and depth of the tremolo. <a href=http://kenzoperronelectronicslab.blogspot.com/2014/05/final-project-report_8.html >This</a> piezoelectric audio trigger which allows the user to trigger bits of sound from either a square-wave oscillator or an audio input. If you tap or press the piezoelectric disk taped to the breadboard, the circuit will let out the oscillator the audio input. The final project that peaked my interest was <a href=https://matthewlauelectronicslab.wordpress.com/2014/05/08/final-lab-report/ >this</a> triangle wave synthesizer. This was a simple triangle wave synthesizer with two voices, a built in tremolo effect, and an active low-pass filter.</p>
+
+<h2>Analog Troubleshooting List</h2>
+
+<p>Here is where I will post all the troubleshooting I do in Analog Circuitry. Each lab that has troubleshooting will have it&rsquo;s own subtitle.</p>
+
+
+
+        </div>
+
+        
+        <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
+          <div class="grid">
+
+  
+<section class="social aside-module grid__item one-whole lap-one-half">
+  <h1 class="title delta">
+    Follow me!
+  </h1>
+  <ul class="unstyled">
+    
+
+
+
+<li><a class="gplus" href="//plus.google.com/100523730825796302451"><i class="icon-google-plus-sign"></i> Google+</a></li>
+
+
+
+<li><a class="twitter" href="//twitter.com/syckomusic"><i class="icon-twitter"></i> Twitter</a></li>
+
+<li><a class="soundcloud" href="//soundcloud.com/sycko-1"><i class="icon-cloud"></i> Soundcloud</a></li>
+<li><a class="mixcloud" href="//mixcloud.com/Sycko"><i class="icon-cloud"></i> Mixcloud</a></li>
+  </ul>
+</section>
+
+
+  
+
+
+
+</div>
+
+        </aside>
+        
+      </div>
+    </div>
+
+    <footer>
+      <div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item">
+      <p class="copyright">
+  All content by Liam Sykes and licenced under <a href="//creativecommons.org/licenses/by-nc-sa/3.0/ie/">Creative Commons</a>.<br>
+  Code under <a href="//github.com/coogie/oscailte/blob/master/README.md">MIT Licence</a>.
+</p>
+    </div>
+  </div>
+</div>
+
+    </footer>
+
+    <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
+<script defer src="/javascripts/octopress.js"></script>
+
+
+
+
+
+
+
+<script>
+  $(document).ready(function(){
+    if (!window.jXHR){
+      var jxhr = document.createElement('script');
+      jxhr.type = 'text/javascript';
+      jxhr.src = '/javascripts/libs/jXHR.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jxhr, s);
+    }
+
+    github.showRepos({
+      user: 'sycko',
+      count: 0,
+      skip_forks: true,
+      target: '#gh_repos'
+    });
+  });
+</script>
+<script src="/javascripts/github.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
